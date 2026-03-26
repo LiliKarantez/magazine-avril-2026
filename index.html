@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les Cœurs Solitaires · Magazine Bretagne · Avril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet: #9B59B6; --violet-deep: #6b1a7a; --fuchsia: #E91E8C;
+    --turquoise: #00BCD4; --noir: #1A1A1A; --creme: #F7F2EC;
+    --creme-dark: #EDE5D8; --gris: #888; --gris-light: #f0ebe4; --blanc: #FAFAFA;
+    --or: #C9A84C; --or-light: #f5e8c4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #e4ddd4; color: var(--noir); }
+
+  .page {
+    width: 210mm; min-height: 297mm; background: white;
+    margin: 20px auto; position: relative; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 40px rgba(0,0,0,0.12), 0 40px 80px rgba(0,0,0,0.08);
+  }
+  .page::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply; opacity: 0;
+  }
+
+  /* ===== COUVERTURE ===== */
+  .couverture {
+    background: linear-gradient(160deg, #1a0428 0%, #4a0e5e 40%, #8b1a7a 70%, #c0156e 100%);
+    min-height: 297mm; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 40px 32px; position: relative;
+  }
+  .couverture::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(233,30,140,0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(0,188,212,0.2) 0%, transparent 50%);
+  }
+  .couv-edition { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 32px; position: relative; }
+  .couv-coeur { font-size: 5rem; color: white; filter: drop-shadow(0 0 40px rgba(233,30,140,0.8)); animation: heartbeat 2s ease-in-out infinite; margin-bottom: 24px; position: relative; }
+  @keyframes heartbeat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.12); } 28% { transform: scale(1); } 42% { transform: scale(1.08); } 56% { transform: scale(1); } }
+  .couv-surtitre { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 12px; position: relative; }
+  .couv-titre { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 600; color: white; line-height: 1.1; margin-bottom: 8px; position: relative; letter-spacing: 0.02em; }
+  .couv-titre .italic { font-style: italic; color: #f9a8d4; }
+  .couv-dept { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: rgba(255,255,255,0.8); margin-bottom: 32px; position: relative; }
+  .couv-ligne { width: 60px; height: 1px; background: rgba(255,255,255,0.4); margin: 0 auto 32px; position: relative; }
+  .couv-tagline { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.75); line-height: 1.6; max-width: 320px; margin: 0 auto 40px; position: relative; }
+  .couv-sommaire { display: flex; flex-direction: column; gap: 8px; position: relative; width: 100%; max-width: 280px; }
+  .couv-sommaire-item { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 10px 16px; font-size: 0.78rem; color: rgba(255,255,255,0.85); text-align: left; }
+  .couv-sommaire-item .num { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: #f9a8d4; width: 20px; }
+  .couv-bas { position: absolute; bottom: 28px; left: 0; right: 0; text-align: center; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+  /* ===== ÉDITO ===== */
+  .page-edito { display: grid; grid-template-columns: 1fr 1fr; min-height: 297mm; }
+  .edito-visuel { background: linear-gradient(160deg, var(--violet-deep), var(--violet)); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 32px 28px; position: relative; overflow: hidden; }
+  .edito-visuel::before { content: '♥'; position: absolute; top: 40px; left: 50%; transform: translateX(-50%); font-size: 8rem; color: rgba(255,255,255,0.08); }
+  .edito-photo-placeholder { width: 160px; height: 200px; border-radius: 80px 80px 40px 40px; background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+  .edito-signature { text-align: center; color: white; }
+  .edito-signature .nom { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; font-weight: 600; }
+  .edito-signature .titre { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 4px; }
+  .edito-contenu { padding: 48px 36px; display: flex; flex-direction: column; justify-content: center; }
+  .edito-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fuchsia); margin-bottom: 16px; }
+  .edito-titre { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; line-height: 1.2; color: var(--noir); margin-bottom: 24px; }
+  .edito-titre .italic { font-style: italic; color: var(--violet); }
+  .edito-texte { font-size: 0.85rem; line-height: 1.8; color: #444; margin-bottom: 14px; }
+  .edito-citation { border-left: 3px solid var(--turquoise); padding-left: 16px; margin: 20px 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--violet-deep); line-height: 1.6; }
+  .edito-fin { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--fuchsia); margin-top: 24px; }
+
+  /* ===== HEADER PAGES ===== */
+  .page-header { background: var(--creme); padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--creme-dark); }
+  .page-header-brand { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; color: var(--violet); display: flex; align-items: center; gap: 6px; }
+  .page-header-brand .italic { font-style: italic; }
+  .page-header-num { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); }
+
+  /* ===== PAGES PROFILS ===== */
+  .profil-hero { padding: 24px 32px 22px; background: linear-gradient(135deg, var(--violet-deep), var(--violet), var(--fuchsia)); position: relative; overflow: hidden; }
+  .profil-hero::before { content: '♥'; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); font-size: 5rem; color: rgba(255,255,255,0.08); }
+  .profil-hero::after { content: ''; position: absolute; bottom: 0; left: 32px; right: 32px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+  .profil-nom { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 600; color: white; line-height: 1; position: relative; letter-spacing: 0.01em; }
+  .profil-sous { font-size: 0.72rem; color: rgba(255,255,255,0.75); margin-top: 4px; letter-spacing: 0.05em; position: relative; }
+
+  /* Layout 2 colonnes : photos | texte */
+  .profil-body { padding: 20px 32px; display: grid; grid-template-columns: 42% 58%; gap: 24px; position: relative; z-index: 1; }
+
+  .profil-photos { display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 1; }
+  .profil-photo-main { border-radius: 12px; overflow: hidden; aspect-ratio: 3/4; background: var(--creme-dark); }
+  .profil-photo-main img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .profil-photos-small { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .profil-photo-small { border-radius: 8px; overflow: hidden; aspect-ratio: 3/4; background: var(--creme-dark); }
+  .profil-photo-small img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+  .profil-info { display: flex; flex-direction: column; gap: 10px; }
+
+  /* PORTRAIT RÉDIGÉ */
+  .profil-portrait {
+    background: linear-gradient(135deg, #fdf9f4, #f7f2ec);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: #2e2e2e;
+    border-left: 3px solid var(--turquoise);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+  .profil-portrait p { margin-bottom: 8px; }
+  .profil-portrait p:last-child { margin-bottom: 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.9rem; color: var(--violet-deep); }
+
+  .profil-en3mots { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 400; font-style: italic; color: var(--fuchsia); letter-spacing: 0.02em; }
+  .profil-section-label { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); margin-bottom: 5px; }
+  .profil-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .profil-tag { background: var(--gris-light); border-radius: 20px; padding: 3px 10px; font-size: 0.68rem; color: var(--noir); }
+  .profil-tag.amour { background: #fff0f8; color: var(--fuchsia); }
+  .profil-tag.passion { background: #f0fafe; color: #0097b2; }
+
+  .profil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .profil-box { background: linear-gradient(135deg, #fdf9f4, #f5ede0); border-radius: 8px; padding: 7px 10px; border: 1px solid rgba(201,168,76,0.12); }
+  .profil-box-label { font-size: 0.53rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); margin-bottom: 2px; }
+  .profil-box-val { font-size: 0.73rem; line-height: 1.4; color: var(--noir); }
+
+  .profil-cta { background: linear-gradient(135deg, var(--fuchsia), #c0156e); border-radius: 8px; padding: 11px 14px; text-align: center; color: white; font-size: 0.73rem; font-weight: 500; }
+  .profil-cta .prix { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; display: block; opacity: 0.85; margin-top: 2px; font-weight: 300; }
+
+  /* ===== COMMENT ÇA MARCHE ===== */
+  .comment-hero { background: linear-gradient(135deg, var(--violet-deep), var(--violet)); padding: 36px 32px 28px; text-align: center; color: white; }
+  .comment-hero-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .comment-hero-titre { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; margin-bottom: 8px; }
+  .comment-hero-titre .italic { font-style: italic; color: #f9a8d4; }
+  .comment-hero-sub { font-size: 0.82rem; color: rgba(255,255,255,0.7); max-width: 320px; margin: 0 auto; line-height: 1.6; }
+  .comment-steps { padding: 28px 32px; display: flex; flex-direction: column; gap: 0; }
+  .comment-step { display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--creme-dark); align-items: flex-start; }
+  .comment-step:last-child { border-bottom: none; }
+  .comment-step-num { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--violet), var(--fuchsia)); color: white; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Cormorant Garamond', serif; }
+  .comment-step-titre { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--noir); margin-bottom: 4px; }
+  .comment-step-texte { font-size: 0.8rem; color: var(--gris); line-height: 1.6; }
+  .comment-banniere { margin: 0 32px 24px; background: var(--creme); border-radius: 12px; padding: 18px 24px; display: flex; justify-content: space-around; text-align: center; }
+  .comment-valeur { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--violet); }
+  .comment-valeur::before { content: "✓ "; color: var(--turquoise); font-style: normal; }
+  .comment-paiement { margin: 0 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .comment-btn { border-radius: 10px; padding: 14px 16px; text-align: center; font-size: 0.78rem; font-weight: 500; text-decoration: none; display: block; }
+  .comment-btn.fuchsia { background: linear-gradient(135deg, var(--fuchsia), #c0156e); color: white; }
+  .comment-btn.paypal { background: #0070ba; color: white; }
+
+  /* ===== AGENDA ===== */
+  .agenda-hero { background: linear-gradient(135deg, #006080, #0097b2, #00bcd4); padding: 36px 32px 28px; text-align: center; color: white; }
+  .agenda-hero-titre { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; margin-bottom: 6px; }
+  .agenda-hero-titre .italic { font-style: italic; }
+  .agenda-hero-sub { font-size: 0.8rem; color: rgba(255,255,255,0.75); }
+  .agenda-grid { padding: 24px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .agenda-item { background: var(--creme); border-radius: 12px; padding: 16px; border-left: 4px solid var(--turquoise); position: relative; }
+  .agenda-item.special { border-left-color: var(--fuchsia); }
+  .agenda-badge { position: absolute; top: 12px; right: 12px; background: var(--fuchsia); color: white; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+  .agenda-ville { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--noir); margin-bottom: 4px; }
+  .agenda-date { font-size: 0.72rem; color: var(--violet); font-weight: 500; margin-bottom: 4px; }
+  .agenda-type { font-size: 0.68rem; color: var(--gris); }
+  .agenda-promo { margin: 0 32px 28px; background: linear-gradient(135deg, var(--fuchsia), #c0156e); border-radius: 12px; padding: 20px 24px; color: white; text-align: center; }
+  .agenda-promo-titre { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; font-weight: 600; margin-bottom: 6px; }
+  .agenda-promo-texte { font-size: 0.78rem; opacity: 0.85; line-height: 1.5; }
+
+  /* ===== PAGE CONTACT ===== */
+  .page-contact { min-height: 297mm; background: linear-gradient(160deg, #1a0428 0%, #4a0e5e 50%, #8b1a7a 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 48px 40px; color: white; position: relative; overflow: hidden; }
+  .page-contact::before { content: '♥'; position: absolute; font-size: 20rem; color: rgba(255,255,255,0.03); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .contact-coeur { font-size: 3rem; margin-bottom: 20px; position: relative; }
+  .contact-titre { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; margin-bottom: 8px; position: relative; }
+  .contact-titre .italic { font-style: italic; color: #f9a8d4; }
+  .contact-sub { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 36px; position: relative; }
+  .contact-infos { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; position: relative; }
+  .contact-ligne { font-size: 0.82rem; color: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .contact-ligne a { color: #f9a8d4; text-decoration: none; }
+  .contact-separateur { width: 40px; height: 1px; background: rgba(255,255,255,0.2); margin: 16px auto; position: relative; }
+  .contact-siret { font-size: 0.62rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; margin-top: 20px; position: relative; }
+  .contact-copyright { font-size: 0.6rem; color: rgba(255,255,255,0.25); margin-top: 8px; position: relative; }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; width: 210mm; min-height: 297mm; }
+    .page:last-child { page-break-after: avoid; }
+    @keyframes heartbeat { 0%, 100% { transform: scale(1); } }
+  }
+
+  /* ===== PROFIL SANS PHOTO ===== */
+  .profil-body-full { padding: 16px 32px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .profil-body-2col { padding: 16px 32px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .profil-annonce-bloc {
+    background: var(--creme);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--violet);
+  }
+  .profil-annonce-titre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--violet-deep);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .profil-annonce-texte {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: #3a3a3a;
+  }
+  .profil-annonce-texte p { margin-bottom: 6px; }
+  .profil-annonce-texte p:last-child { margin-bottom: 0; }
+  .profil-photo-placeholder-full {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    background: var(--creme-dark);
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: var(--gris);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  /* Page 2-profils */
+  .page-duo { min-height: 297mm; display: flex; flex-direction: column; }
+  .duo-half { flex: 1; border-bottom: 1px solid var(--creme-dark); }
+  .duo-half:last-child { border-bottom: none; }
+  .duo-hero {
+    padding: 12px 32px 10px;
+    background: linear-gradient(135deg, var(--violet-deep), var(--violet), var(--fuchsia));
+    position: relative;
+    overflow: hidden;
+  }
+  .duo-hero::before { content: '♥'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 3rem; color: rgba(255,255,255,0.08); }
+  .duo-nom { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: white; line-height: 1; position: relative; }
+  .duo-sous { font-size: 0.68rem; color: rgba(255,255,255,0.75); margin-top: 3px; letter-spacing: 0.05em; position: relative; }
+  .duo-body { padding: 12px 28px 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; z-index: 1; }
+  .duo-left { display: flex; flex-direction: column; gap: 8px; }
+  .duo-right { display: flex; flex-direction: column; gap: 8px; }
+  .duo-portrait {
+    background: var(--creme);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+    line-height: 1.65;
+    color: #3a3a3a;
+    border-left: 3px solid var(--turquoise);
+    grid-column: 1 / -1;
+  }
+  .duo-portrait p { margin-bottom: 5px; }
+  .duo-portrait p:last-child { margin-bottom: 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.85rem; color: var(--violet-deep); }
+  .duo-cta { background: linear-gradient(135deg, var(--fuchsia), #c0156e); border-radius: 6px; padding: 8px 12px; text-align: center; color: white; font-size: 0.68rem; font-weight: 500; grid-column: 1 / -1; }
+  .duo-cta .prix { font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; font-style: italic; display: block; opacity: 0.85; margin-top: 1px; font-weight: 300; }
+  .duo-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-height: 110px;
+    border-radius: 8px;
+    background: var(--creme-dark);
+    border: 1.5px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.58rem;
+    color: var(--gris);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+
+  /* ===== MODALE PAIEMENT ===== */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(10,0,20,0.75); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-card {
+    background: white; border-radius: 20px; max-width: 380px; width: 100%;
+    overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes modalIn { from { opacity:0; transform: scale(0.88) translateY(20px); } to { opacity:1; transform: none; } }
+  .modal-header {
+    background: linear-gradient(160deg, #0d0118 0%, #3d0a5a 50%, #8b1a7a 80%, #c0156e 100%);
+    padding: 28px 28px 22px; text-align: center; position: relative;
+  }
+  .modal-close {
+    position: absolute; top: 12px; right: 14px; background: rgba(255,255,255,0.15);
+    border: none; color: white; width: 28px; height: 28px; border-radius: 50%;
+    font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.3); }
+  .modal-heart { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+  .modal-titre { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: white; margin-bottom: 4px; }
+  .modal-sous { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .modal-body { padding: 24px 24px 20px; }
+  .modal-prix {
+    text-align: center; background: #fdf5ff; border-radius: 12px; padding: 14px 16px; margin-bottom: 18px;
+    border: 1px solid rgba(155,89,182,0.15);
+  }
+  .modal-prix-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--violet-deep); }
+  .modal-prix-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris); margin-top: 2px; }
+  .modal-btn {
+    display: block; width: 100%; padding: 13px 16px; border-radius: 12px;
+    font-family: 'Jost', sans-serif; font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.05em; text-align: center; text-decoration: none;
+    cursor: pointer; border: none; margin-bottom: 10px; transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .modal-btn:hover { transform: translateY(-1px); }
+  .modal-btn.primary {
+    background: linear-gradient(135deg, var(--fuchsia), #c0156e); color: white;
+    box-shadow: 0 6px 20px rgba(233,30,140,0.3);
+  }
+  .modal-btn.primary:hover { box-shadow: 0 10px 28px rgba(233,30,140,0.45); }
+  .modal-btn.secondary {
+    background: white; color: #003087; border: 1.5px solid #003087;
+  }
+  .modal-separator { text-align: center; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #ccc; margin: 4px 0 10px; }
+  .modal-note { text-align: center; font-size: 0.65rem; color: var(--gris); line-height: 1.6; margin-top: 14px; }
+
+  /* ===== FORMULAIRE BULLE ===== */
+  .contact-bubble {
+    background: var(--creme); border-radius: 12px; padding: 14px 16px;
+    margin-top: 10px; border: 1px solid var(--creme-dark);
+  }
+  .contact-bubble-titre {
+    font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; font-style: italic;
+    color: var(--violet-deep); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+  }
+  .contact-bubble input,
+  .contact-bubble textarea {
+    width: 100%; border: 1px solid #ddd; border-radius: 8px; padding: 8px 10px;
+    font-family: 'Jost', sans-serif; font-size: 0.75rem; color: var(--noir);
+    background: white; outline: none; transition: border-color 0.2s; margin-bottom: 6px;
+    resize: none;
+  }
+  .contact-bubble input:focus,
+  .contact-bubble textarea:focus { border-color: var(--violet); }
+  .contact-bubble-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .contact-bubble-btn {
+    width: 100%; padding: 9px; background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+    color: white; border: none; border-radius: 8px; font-family: 'Jost', sans-serif;
+    font-size: 0.72rem; font-weight: 500; cursor: pointer; letter-spacing: 0.05em;
+    margin-top: 2px; transition: opacity 0.2s;
+  }
+  .contact-bubble-btn:hover { opacity: 0.9; }
+  .contact-bubble-success {
+    display: none; text-align: center; font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 0.9rem; color: var(--violet-deep); padding: 8px 0;
+  }
+
+
+  /* ===== AGENDA CTA SMALL ===== */
+  .agenda-cta-small { margin-top: 8px; }
+  .agenda-cta-small a {
+    display: inline-block; background: var(--turquoise); color: white;
+    padding: 5px 14px; border-radius: 20px; font-size: 0.68rem;
+    text-decoration: none; font-weight: 500; letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+  }
+  .agenda-cta-small a:hover { opacity: 0.85; }
+
+  /* ===== PAGE ARTICLES ===== */
+  .articles-hero {
+    background: linear-gradient(135deg, #1a0428, #4a0e5e, #7b1a7a);
+    padding: 28px 32px 22px; text-align: center; color: white;
+  }
+  .articles-hero-titre { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; }
+  .articles-hero-titre .italic { font-style: italic; color: #f9a8d4; }
+  .articles-hero-sub { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 6px; }
+
+  /* Accordéon articles */
+  .article-accordion { border-bottom: 1px solid var(--creme-dark); }
+  .article-header {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 28px; cursor: pointer; transition: background 0.2s;
+    user-select: none;
+  }
+  .article-header:hover { background: #fdf8ff; }
+  .article-cat {
+    flex-shrink: 0; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase;
+    background: var(--violet); color: white; padding: 3px 8px; border-radius: 20px;
+    margin-top: 3px; white-space: nowrap;
+  }
+  .article-cat.digital { background: var(--turquoise); }
+  .article-cat.bienetre { background: #c0406e; }
+  .article-title-wrap { flex: 1; }
+  .article-titre {
+    font-family: 'Playfair Display', serif; font-size: 1.02rem; font-weight: 600;
+    color: var(--noir); line-height: 1.3;
+  }
+  .article-chapeau { font-size: 0.72rem; color: var(--gris); margin-top: 3px; line-height: 1.5; }
+  .article-toggle {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--creme); color: var(--violet); font-size: 0.8rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s, background 0.2s; margin-top: 2px;
+  }
+  .article-accordion.open .article-toggle {
+    transform: rotate(45deg); background: var(--violet); color: white;
+  }
+  .article-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+    padding: 0 28px;
+  }
+  .article-accordion.open .article-body { max-height: 1200px; }
+  .article-texte { padding: 0 0 18px; font-size: 0.8rem; line-height: 1.85; color: #3a3a3a; }
+  .article-texte p { margin-bottom: 10px; }
+  .article-texte p:last-child { margin-bottom: 0; }
+
+  /* Barre de lecture */
+  .reading-bar {
+    height: 3px; background: var(--creme-dark); border-radius: 2px;
+    margin: 0 28px 14px; overflow: hidden;
+  }
+  .reading-progress {
+    height: 100%; width: 0%; border-radius: 2px;
+    background: linear-gradient(90deg, var(--violet), var(--fuchsia));
+    transition: width 0.3s;
+  }
+
+
+  /* ===== NAVIGATION PAGES ===== */
+  .page-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 28px; background: var(--creme); border-bottom: 1px solid var(--creme-dark);
+  }
+  .nav-btn {
+    display: flex; align-items: center; gap: 6px; background: none; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 500;
+    color: var(--violet); cursor: pointer; padding: 5px 10px; border-radius: 20px;
+    transition: background 0.15s, color 0.15s; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .nav-btn:hover { background: #f0e8ff; }
+  .nav-btn:disabled { color: #ccc; cursor: default; }
+  .nav-btn:disabled:hover { background: none; }
+  .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; color: var(--violet); display: flex; align-items: center; gap: 5px; }
+  .nav-brand .italic { font-style: italic; }
+
+
+  /* ===== COEURS FLOTTANTS COUVERTURE ===== */
+  @keyframes float1 { 0%,100% { transform:translateY(0) rotate(-10deg); opacity:0.15; } 50% { transform:translateY(-12px) rotate(5deg); opacity:0.25; } }
+  @keyframes float2 { 0%,100% { transform:translateY(0) rotate(8deg); opacity:0.1; } 50% { transform:translateY(-18px) rotate(-5deg); opacity:0.2; } }
+  @keyframes float3 { 0%,100% { transform:translateY(0) rotate(-5deg); opacity:0.12; } 50% { transform:translateY(-8px) rotate(10deg); opacity:0.22; } }
+  .heart-float-1 { position:absolute; font-size:4rem; color:white; animation:float1 4s ease-in-out infinite; pointer-events:none; }
+  .heart-float-2 { position:absolute; font-size:2.5rem; color:white; animation:float2 5.5s ease-in-out infinite; pointer-events:none; }
+  .heart-float-3 { position:absolute; font-size:1.8rem; color:white; animation:float3 3.5s ease-in-out infinite 1s; pointer-events:none; }
+  .heart-float-4 { position:absolute; font-size:6rem; color:rgba(255,255,255,0.05); animation:float1 7s ease-in-out infinite 0.5s; pointer-events:none; }
+
+
+  /* ===== RESPONSIVE MOBILE ===== */
+  @media screen and (max-width: 768px) {
+
+    body { background: #1a0428; }
+
+    .page {
+      width: 100% !important;
+      min-height: auto !important;
+      margin: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+
+    /* COUVERTURE */
+    .page > div[style*="min-height:297mm"] {
+      min-height: 100vh !important;
+    }
+
+    /* ÉDITO */
+    .page-edito {
+      grid-template-columns: 1fr !important;
+      min-height: auto !important;
+    }
+    .edito-visuel {
+      padding: 32px 24px 24px !important;
+      min-height: 280px !important;
+    }
+    .edito-contenu {
+      padding: 28px 24px !important;
+    }
+    .edito-titre { font-size: 1.6rem !important; }
+
+    /* PAGE LILI 3 COLONNES */
+    .page > div[style*="grid-template-columns:1fr 2px 1fr 2px 1fr"] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    /* PROFIL PLEINE PAGE */
+    .profil-body {
+      grid-template-columns: 1fr !important;
+      padding: 16px 18px !important;
+    }
+    .profil-photos {
+      display: flex !important;
+      flex-direction: row !important;
+      gap: 6px !important;
+      margin-bottom: 4px !important;
+    }
+    .profil-photo-main {
+      flex: 2 !important;
+      aspect-ratio: 3/4 !important;
+    }
+    .profil-photos-small {
+      flex: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    .profil-photo-small {
+      aspect-ratio: 3/4 !important;
+    }
+    .profil-nom { font-size: 1.8rem !important; }
+    .profil-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    .profil-hero { padding: 18px 20px 16px !important; }
+
+    /* PAGES DUO */
+    .page-duo {
+      min-height: auto !important;
+    }
+    .duo-half {
+      border-bottom: 2px solid var(--creme-dark) !important;
+    }
+    .duo-body {
+      grid-template-columns: 1fr !important;
+      padding: 12px 18px 14px !important;
+    }
+    .duo-left, .duo-right {
+      width: 100% !important;
+    }
+    .duo-nom { font-size: 1.5rem !important; }
+
+    /* PROFILS SANS PHOTO (Laurent67, Seaside) */
+    .page > div[style*="padding: 22px 32px"] {
+      padding: 16px 18px 20px !important;
+    }
+
+    /* GRID 2 COLONNES → 1 colonne */
+    .page > div[style*="grid-template-columns: repeat(4, 1fr)"],
+    .profil-grid[style*="grid-template-columns: repeat(4, 1fr)"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+
+    /* MATCHING PAGE */
+    .page > div[style*="grid-template-columns:1fr 1fr"] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    /* ARTICLES */
+    .page > div[style*="columns:2"] {
+      columns: 1 !important;
+    }
+    .page > div[style*="grid-template-columns:1fr 1px 1fr"] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .page > div[style*="grid-template-columns: 1fr 1px 1fr"] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    /* AGENDA */
+    .agenda-grid {
+      grid-template-columns: 1fr !important;
+      padding: 16px 18px !important;
+    }
+    .agenda-item[style*="grid-column: 1 / -1"] {
+      grid-column: 1 !important;
+    }
+    .agenda-hero { padding: 24px 20px 18px !important; }
+
+    /* COMMENT CA MARCHE */
+    .comment-paiement {
+      grid-template-columns: 1fr !important;
+      margin: 0 18px !important;
+    }
+    .comment-steps { padding: 16px 18px !important; }
+    .comment-banniere {
+      margin: 0 18px 16px !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+
+    /* PAGE CONTACT */
+    .page-contact {
+      padding: 40px 24px !important;
+      min-height: auto !important;
+    }
+
+    /* NAVIGATION */
+    .page-nav {
+      padding: 10px 16px !important;
+      font-size: 0.65rem !important;
+    }
+    .nav-btn { font-size: 0.62rem !important; padding: 4px 8px !important; }
+
+    /* MODAL */
+    .modal-card {
+      margin: 16px !important;
+      max-width: calc(100% - 32px) !important;
+    }
+
+    /* CONTACT BUBBLE */
+    .contact-bubble { padding: 12px 14px !important; }
+    .contact-bubble-row {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* TITRES GÉNÉRAUX */
+    .profil-en3mots { font-size: 1rem !important; }
+    .profil-portrait { font-size: 0.78rem !important; }
+
+    /* COUVERTURE MOBILE */
+    #pg-couv div[style*="font-size:4.5rem"] {
+      font-size: 3.2rem !important;
+    }
+    #pg-couv div[style*="font-size:4.2rem"] {
+      font-size: 3rem !important;
+    }
+
+    /* SOMMAIRE COUVERTURE */
+    #pg-couv div[style*="background:white"] {
+      margin: 0 12px 0 !important;
+    }
+
+    /* MATCHING */
+    #pg-matching div[style*="padding:32px 28px"] {
+      padding: 24px 20px !important;
+    }
+
+    /* ARTICLES */
+    #pg-articles div[style*="padding:14px 32px"] {
+      padding: 12px 18px !important;
+    }
+    #pg-articles div[style*="padding:14px 20px 14px 32px"],
+    #pg-articles div[style*="padding:12px 20px 12px 32px"] {
+      padding: 16px 18px !important;
+    }
+
+    /* Filets séparateurs colonnes — masquer sur mobile */
+    div[style*="background:var(--creme-dark);"][style*="1px"] {
+      display: none !important;
+    }
+
+    /* PAGE NAV sticky */
+    .page-nav {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 50 !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .profil-nom { font-size: 1.5rem !important; }
+    #pg-couv div[style*="font-size:4.5rem"] { font-size: 2.8rem !important; }
+    #pg-couv div[style*="font-size:4.2rem"] { font-size: 2.6rem !important; }
+    .edito-titre { font-size: 1.4rem !important; }
+    .profil-hero { padding: 14px 16px 12px !important; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ===== PAGE 1 — COUVERTURE ===== -->
+<div class="page" id="pg-couv">
+<div style="min-height:297mm; position:relative; overflow:hidden; display:flex; flex-direction:column; background:#fdf0f5;">
+
+  <!-- FOND : grands blocs de couleur superposés -->
+  <div style="position:absolute; top:0; left:0; right:0; height:62%; background:linear-gradient(135deg, #6b1a7a 0%, #c0156e 50%, #E91E8C 100%);"></div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:42%; background:#fdf0f5;"></div>
+  <!-- Vague de transition -->
+  <div style="position:absolute; top:58%; left:0; right:0; height:80px; background:linear-gradient(135deg, #6b1a7a 0%, #c0156e 50%, #E91E8C 100%); clip-path:ellipse(55% 100% at 50% 0%);"></div>
+
+  <!-- Coeurs flottants décoratifs -->
+  <div class="heart-float-4" style="top:8%; right:12%;">&#9829;</div>
+  <div class="heart-float-1" style="top:22%; right:6%;">&#9829;</div>
+  <div class="heart-float-2" style="top:38%; right:18%;">&#9829;</div>
+  <div class="heart-float-3" style="top:15%; right:28%;">&#9825;</div>
+  <div class="heart-float-2" style="top:52%; right:8%;">&#9825;</div>
+  <div class="heart-float-1" style="bottom:35%; right:22%;">&#9829;</div>
+  
+
+  <!-- BANDEAU SUPÉRIEUR -->
+  <div style="position:relative; z-index:2; padding:18px 28px 0; display:flex; justify-content:space-between; align-items:center;">
+    <div style="display:flex; align-items:center; gap:6px;">
+      <span style="font-size:1rem; color:rgba(255,255,255,0.9);">&#9825;</span>
+      <span style="font-size:0.55rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.8); font-weight:500;">Les C&#339;urs Solitaires</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span style="font-size:0.52rem; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.4); color:white; padding:3px 10px; border-radius:20px; letter-spacing:0.15em; text-transform:uppercase;">N&#176;&thinsp;6</span>
+      <span style="font-size:0.52rem; color:rgba(255,255,255,0.7); letter-spacing:0.15em; text-transform:uppercase;">Avril 2026</span>
+      <span style="font-size:0.52rem; background:rgba(201,168,76,0.9); color:white; padding:3px 10px; border-radius:20px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;">Gratuit</span>
+    </div>
+  </div>
+
+  <!-- TITRE PRINCIPAL -->
+  <div style="position:relative; z-index:2; padding:16px 28px 0; flex:1; display:flex; flex-direction:column;">
+
+    <div style="margin-bottom:4px;">
+      <div style="font-family:'Playfair Display',serif; font-size:4.5rem; font-weight:700; color:white; line-height:0.9; letter-spacing:-0.02em;">Les &#9829;</div>
+      <div style="font-family:'Playfair Display',serif; font-size:4.5rem; font-weight:700; color:white; line-height:0.9; letter-spacing:-0.02em;">C&#339;urs</div>
+      <div style="font-family:'Playfair Display',serif; font-size:4.2rem; font-weight:400; font-style:italic; color:rgba(255,255,255,0.92); line-height:1.0; letter-spacing:-0.01em;">Solitaires</div>
+    </div>
+
+    <!-- Filet + sous-titre -->
+    <div style="display:flex; align-items:center; gap:10px; margin:12px 0 16px;">
+      <div style="height:2px; width:24px; background:rgba(255,255,255,0.5);"></div>
+      <div style="font-size:0.6rem; letter-spacing:0.35em; text-transform:uppercase; color:rgba(255,255,255,0.75);">&#201;dition Bretagne</div>
+      <div style="height:2px; flex:1; background:rgba(255,255,255,0.2);"></div>
+    </div>
+
+    <!-- ACCROCHE -->
+    <div style="background:rgba(255,255,255,0.15); backdrop-filter:blur(4px); border-radius:10px; padding:12px 16px; margin-bottom:20px; max-width:280px; border:1px solid rgba(255,255,255,0.25);">
+      <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.92rem; color:white; line-height:1.55;">&#171;&thinsp;La rencontre m&eacute;rite mieux qu&#8217;un algorithme.&thinsp;&#187;</div>
+    </div>
+
+    <!-- SOMMAIRE — zone claire -->
+    <div style="background:white; border-radius:14px; padding:14px 16px; box-shadow:0 8px 30px rgba(107,26,122,0.12); margin-bottom:0;">
+      <div style="font-size:0.5rem; letter-spacing:0.25em; text-transform:uppercase; color:#c0156e; margin-bottom:10px; font-weight:600;">Au sommaire</div>
+      <div style="display:flex; flex-direction:column; gap:0;">
+
+        <div onclick="navTo('pg-edito')" style="display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid #f5edf8; cursor:pointer;">
+          <div>
+            <span style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.82rem; color:#2e2e2e;">&#9825; &Eacute;dito &middot; Lili Karantez</span>
+          </div>
+          <span style="font-size:0.65rem; color:#E91E8C;">&#8594;</span>
+        </div>
+
+        <div onclick="navTo('pg-pivoine')" style="display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid #f5edf8; cursor:pointer;">
+          <div>
+            <span style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.82rem; color:#2e2e2e;">&#9829; Les Portraits Myst&egrave;re</span>
+          </div>
+          <span style="font-size:0.65rem; color:#E91E8C;">&#8594;</span>
+        </div>
+
+        <div onclick="navTo('pg-articles')" style="display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid #f5edf8; cursor:pointer;">
+          <div>
+            <span style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.82rem; color:#2e2e2e;">&#9829; Vie &amp; Rencontres</span>
+            <div style="font-size:0.6rem; color:#aaa; margin-top:1px;">Red flags &middot; Ghosting &middot; Se reconstruire</div>
+          </div>
+          <span style="font-size:0.65rem; color:#E91E8C;">&#8594;</span>
+        </div>
+
+        <div onclick="navTo('pg-agenda')" style="display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid #f5edf8; cursor:pointer;">
+          <div>
+            <span style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.82rem; color:#2e2e2e;">&#9825; Agenda 2026 &middot; Le Salon de Vannes</span>
+          </div>
+          <span style="font-size:0.65rem; color:#E91E8C;">&#8594;</span>
+        </div>
+
+        <div onclick="navTo('pg-matching')" style="display:flex; justify-content:space-between; align-items:center; padding:7px 0; cursor:pointer;">
+          <div>
+            <span style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.82rem; color:#2e2e2e;"><span style="background:#E91E8C;color:white;font-size:0.48rem;font-weight:700;padding:1px 6px;border-radius:10px;margin-right:5px;vertical-align:middle;">NOUVEAU</span><span style="background:#E91E8C;color:white;font-size:0.48rem;font-weight:700;padding:1px 6px;border-radius:8px;margin-right:4px;vertical-align:middle;letter-spacing:0.08em;">NOUVEAU</span>Le Matching de Lili Karantez <sup style="font-size:0.5rem;font-style:normal;">&#174;</sup></span>
+          </div>
+          <span style="font-size:0.65rem; color:#E91E8C;">&#8594;</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PIED -->
+  <div style="position:relative; z-index:2; padding:10px 28px 14px; text-align:center;">
+    <div style="font-size:0.5rem; color:#c0156e; letter-spacing:0.12em; text-transform:uppercase; opacity:0.7;">
+      lilikarantez@gmail.com &middot; SIRET 40149331700069
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ===== PAGE ÉDITO + LILI ===== -->
+<div class="page" id="pg-edito">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-couv')">&#8592; Couverture</button>
+    <span class="nav-brand">&#9825; Les C&#339;urs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-pivoine')">Suivant &#8594;</button>
+  </div>
+
+  <!-- LAYOUT MAGAZINE : 3 colonnes -->
+  <div style="display:grid; grid-template-columns:1fr 2px 1fr 2px 1fr; min-height:calc(297mm - 42px); gap:0;">
+
+    <!-- COL 1 : Photo + signature Lili -->
+    <div style="background:linear-gradient(160deg,#1a0428,#4a0e5e,#7b1a7a); display:flex; flex-direction:column; align-items:center; padding:28px 20px 24px; position:relative; overflow:hidden;">
+      <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);font-size:5rem;color:rgba(255,255,255,0.04);">&#9825;</div>
+      <div style="font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:16px; text-align:center;">&#201;dito · Avril 2026</div>
+      <div style="width:120px;height:150px;border-radius:60px 60px 30px 30px;overflow:hidden;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);margin-bottom:14px;">
+        <img src="https://lilikarantez.github.io/photo-Lili-Karantez/Lili1.jpg" alt="Lili Karantez" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+      </div>
+      <div style="text-align:center;color:white;margin-bottom:20px;">
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;font-weight:600;">Lili Karantez</div>
+        <div style="font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:3px;">Fondatrice</div>
+        <div style="font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Les C&#339;urs Solitaires</div>
+      </div>
+
+      <!-- Filet -->
+      <div style="width:40px;height:1px;background:rgba(201,168,76,0.5);margin-bottom:18px;"></div>
+
+      <!-- Présentation courte -->
+      <div style="font-size:0.72rem;line-height:1.8;color:rgba(255,255,255,0.75);text-align:center;margin-bottom:18px;">
+        Auteure · Organisatrice<br>et fondatrice des<br><strong style="color:white;">C&#339;urs Solitaires</strong>
+      </div>
+
+      <!-- Groupes Facebook -->
+      <div style="width:100%;display:flex;flex-direction:column;gap:5px;margin-bottom:16px;">
+        <div style="font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:3px;">Nos groupes</div>
+        <a href="https://www.facebook.com/groups/1610004976584294/" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:5px 10px;text-decoration:none;">
+          <span style="font-size:0.65rem;">&#128216;</span><span style="font-size:0.62rem;color:rgba(255,255,255,0.8);">Morbihan · 56</span>
+        </a>
+        <a href="https://www.facebook.com/groups/456856470343173/" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:5px 10px;text-decoration:none;">
+          <span style="font-size:0.65rem;">&#128216;</span><span style="font-size:0.62rem;color:rgba(255,255,255,0.8);">Finist&#232;re · 29</span>
+        </a>
+        <a href="https://www.facebook.com/groups/439415065858530/" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:5px 10px;text-decoration:none;">
+          <span style="font-size:0.65rem;">&#128216;</span><span style="font-size:0.62rem;color:rgba(255,255,255,0.8);">C&#244;tes-d'Armor · 22</span>
+        </a>
+        <a href="https://www.facebook.com/groups/1609476126612650/" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:5px 10px;text-decoration:none;">
+          <span style="font-size:0.65rem;">&#128216;</span><span style="font-size:0.62rem;color:rgba(255,255,255,0.8);">Ille-et-Vilaine · 35</span>
+        </a>
+      </div>
+
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:0.8rem;color:rgba(255,255,255,0.5);text-align:center;">+2 500 membres<br>en Bretagne</div>
+    </div>
+
+    <!-- SÉPARATEUR -->
+    <div style="background:linear-gradient(to bottom,transparent,rgba(155,89,182,0.3),transparent);"></div>
+
+    <!-- COL 2 : Édito -->
+    <div style="padding:28px 22px; display:flex; flex-direction:column; justify-content:flex-start; border-right:1px solid var(--creme-dark);">
+      <div style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--fuchsia);margin-bottom:12px;">&#201;dito</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:600;line-height:1.2;color:var(--noir);margin-bottom:16px;">Un magazine <em style="color:var(--violet);">gratuit</em>,<br>un concept nouveau</div>
+
+      <p style="font-size:0.81rem;line-height:1.88;color:#3a3a3a;margin-bottom:12px;">
+        <span style="float:left;font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:600;color:var(--violet);line-height:0.8;margin-right:5px;margin-top:3px;">I</span>l y a des rencontres qui changent tout. Pas celles que l'on force, ni celles que l'on scrolle &#224; l'infini sur un &#233;cran. Celles qui arrivent quand on est enfin pr&#234;t &#224; se laisser surprendre.
+      </p>
+
+      <div style="border-left:3px solid var(--turquoise);padding-left:12px;margin:14px 0;font-family:'Playfair Display',serif;font-style:italic;font-size:0.92rem;color:var(--violet-deep);line-height:1.6;">
+        &#171;&#160;La rencontre m&#233;rite mieux qu'un algorithme.&#160;&#187;
+      </div>
+
+      <p style="font-size:0.81rem;line-height:1.88;color:#3a3a3a;margin-bottom:12px;">C'est pour cela que j'ai cr&#233;&#233; Les C&#339;urs Solitaires. Non pas pour vous promettre l'amour en trois clics, mais pour vous offrir quelque chose de plus rare&#160;: un espace humain, bienveillant, o&#249; chaque profil est choisi avec soin, chaque mise en relation pens&#233;e avec intention.</p>
+
+      <p style="font-size:0.81rem;line-height:1.88;color:#3a3a3a;margin-bottom:16px;">Dans ce magazine, vous d&#233;couvrirez des portraits de personnes vraies, courageuses, qui ont choisi de se montrer telles qu'elles sont. Peut-&#234;tre que l'une d'elles vous ressemble. Peut-&#234;tre que l'une d'elles vous manquait.</p>
+
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:0.95rem;color:var(--fuchsia);margin-top:auto;">
+        Lili Karantez<br>
+        <span style="font-size:0.72rem;color:var(--gris);font-style:normal;font-family:'DM Sans',sans-serif;">Les C&#339;urs Solitaires · Lorient</span>
+      </div>
+    </div>
+
+    <!-- SÉPARATEUR -->
+    <div style="background:linear-gradient(to bottom,transparent,rgba(155,89,182,0.3),transparent);"></div>
+
+    <!-- COL 3 : Qui je suis -->
+    <div style="padding:28px 22px; display:flex; flex-direction:column; justify-content:flex-start;">
+      <div style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--fuchsia);margin-bottom:12px;">Qui suis-je&#160;?</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:600;line-height:1.2;color:var(--noir);margin-bottom:16px;">Je suis<br><em style="color:var(--violet);">Lili Karantez</em></div>
+
+      <p style="font-size:0.81rem;line-height:1.88;color:#3a3a3a;margin-bottom:12px;">Je suis auteure, organisatrice d'&#233;v&#233;nements et fondatrice des C&#339;urs Solitaires, une communaut&#233; de groupes priv&#233;s Facebook pour c&#233;libataires dans le Grand Ouest.</p>
+
+      <p style="font-size:0.81rem;line-height:1.88;color:#3a3a3a;margin-bottom:12px;">Aujourd'hui, vous &#234;tes plus de <strong>2&#160;500 membres en Bretagne</strong>. Mon objectif est simple&#160;: vous aider &#224; impulser un renouveau dans votre vie sentimentale gr&#226;ce &#224; des accompagnements, du contenu et des &#233;v&#233;nements.</p>
+
+      <div style="background:linear-gradient(135deg,#fdf5ff,#f5e8ff);border-left:3px solid var(--violet);border-radius:0 8px 8px 0;padding:12px 14px;margin-bottom:14px;">
+        <p style="font-size:0.81rem;line-height:1.88;color:#3a3a3a;">J'ai le plaisir de vous offrir le <strong>Magazine des C&#339;urs Solitaires</strong>, enti&#232;rement num&#233;rique et <strong>gratuit</strong>, avec toujours des portraits &#224; d&#233;couvrir et des mises en relation.</p>
+      </div>
+
+      <p style="font-size:0.81rem;line-height:1.88;color:#3a3a3a;margin-bottom:20px;">Je suis l&#224; pour accompagner, mettre en relation, cr&#233;er des occasions de se rencontrer vraiment&#160;&#8212; parce que l'amour, &#231;a se vit avec passion&#160;!</p>
+
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:0.9rem;color:var(--fuchsia);margin-top:auto;">
+        Avec toute mon affection,<br>
+        <span style="font-size:1.1rem;font-weight:600;">Lili Karantez</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== PAGE 4 — PORTRAIT PIVOINE ===== -->
+<div class="page" id="pg-pivoine">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-edito')">&#8592; Précédent</button>
+    <span class="nav-brand">♥ Les Cœurs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-davidg')">Suivant &#8594;</button>
+  </div>
+  <div class="profil-hero" style="background: linear-gradient(135deg, #6b0050, #c0156e, #e91e8c);">
+    <div class="profil-nom">Pivoine</div>
+    <div class="profil-sous">Morbihan · 66 ans · Presqu'île de Rhuys</div>
+  </div>
+  <div class="profil-body">
+    <div class="profil-photos">
+      <div class="profil-photo-main">
+        <img src="https://lilikarantez.github.io/photo-pivoine/pivoine1.jpg" alt="Pivoine" onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'">
+      </div>
+      <div class="profil-photos-small">
+        <div class="profil-photo-small"><img src="https://lilikarantez.github.io/photo-pivoine/pivoine2.jpg" alt="Pivoine" onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'"></div>
+        <div class="profil-photo-small"><img src="https://lilikarantez.github.io/photo-pivoine/pivoine3.jpg" alt="Pivoine" onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'"></div>
+      </div>
+    </div>
+    <div class="profil-info">
+      <div>
+        <div class="profil-section-label">En 3 mots</div>
+        <div class="profil-en3mots" style="color:#c0156e;">Franche · Généreuse · Tendre</div>
+      </div>
+      <div>
+        <div class="profil-section-label">L'amour pour elle c'est…</div>
+        <div class="profil-tags">
+          <span class="profil-tag amour">Complicité</span>
+          <span class="profil-tag amour">Partage</span>
+          <span class="profil-tag amour">Bienveillance</span>
+        </div>
+      </div>
+      <div class="profil-grid">
+        <div class="profil-box"><div class="profil-box-label">Physique</div><div class="profil-box-val">1m69 · Yeux marrons · Cheveux châtains courts</div></div>
+        <div class="profil-box"><div class="profil-box-label">Situation</div><div class="profil-box-val">Divorcée · Non-fumeuse · Enfants majeurs</div></div>
+        <div class="profil-box"><div class="profil-box-label">Recherche</div><div class="profil-box-val">Homme · 62–72 ans</div></div>
+        <div class="profil-box"><div class="profil-box-label">Zone</div><div class="profil-box-val">Morbihan · 80 km max</div></div>
+      </div>
+
+      <div>
+        <div class="profil-section-label">Passions</div>
+        <div class="profil-tags">
+          <span class="profil-tag passion">🌊 Mer &amp; voile</span>
+          <span class="profil-tag passion">🥾 Randonnée</span>
+          <span class="profil-tag passion">📚 Lecture</span>
+          <span class="profil-tag passion">🐾 Animaux</span>
+          <span class="profil-tag passion">🌺 Yoga &amp; méditation</span>
+          <span class="profil-tag passion">🏊 Natation</span>
+          <span class="profil-tag passion">✨ Bénévolat SPA</span>
+          <span class="profil-tag passion">🎵 Fest Noz</span>
+        </div>
+      </div>
+
+      <div class="profil-portrait" style="border-left-color: #c0156e;">
+        <p>Elle commence ses journées en douceur, au rythme de ses deux chiens qu'elle emmène se balader chaque matin. Pilates, danse bretonne, hatha yoga, bénévolat à la SPA — sa vie est riche et bien remplie.</p>
+        <p>Le weekend, elle aime les fest-noz, les soirées entre amis, la mer et la nature. Dans une relation, elle s'investit pleinement : généreuse, franche, elle sait faire des concessions et cherche la discussion plutôt que les non-dits.</p>
+        <p>Ce qu'elle espère trouver ? Une personne au clair avec son passé, qui lui donnera sa place — et avec qui partager une complicité simple et heureuse, dans la liberté et la bienveillance.</p>
+        <p>« Chacun garde ses activités, sa liberté et son indépendance — pour mieux se retrouver. »</p>
+      </div>
+
+            <div class="profil-cta" style="background:linear-gradient(135deg, #c0156e, #6b0050); cursor:pointer;" onclick="openModal('Pivoine', 'https://yp.events/e2a2e1eb-e706-4bc0-b0ce-aa8bc0cb24fd/Mise-en-Relation-avec-PIVOINE/ticketing?from=1')">
+        💝 Me mettre en relation avec Pivoine
+        <span class="prix">Mise en relation · 13 €</span>
+      </div>
+      <div class="contact-bubble">
+        <div class="contact-bubble-titre">💬 Une question ? Écrivez-nous</div>
+        <form id="form-pivoine" onsubmit="submitBubble(event, 'form-pivoine', 'Pivoine')">
+          <input type="hidden" name="access_key" value="d42b8d9d-a52c-4888-a489-5dd59b1b0f5b">
+          <input type="hidden" name="subject" value="Question sur Pivoine - Les Cœurs Solitaires">
+          <div class="contact-bubble-row">
+            <input type="text" name="prenom" placeholder="Prénom" required>
+            <input type="text" name="nom_contact" placeholder="Nom" required>
+          </div>
+          <textarea name="message" rows="2" placeholder="Votre message…" required></textarea>
+          <button type="submit" class="contact-bubble-btn">Envoyer ✉</button>
+        </form>
+        <div class="contact-bubble-success" id="success-form-pivoine">Message envoyé avec soin. ♥</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 5 — PORTRAIT DAVID G. ===== -->
+<div class="page" id="pg-davidg">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-pivoine')">&#8592; Précédent</button>
+    <span class="nav-brand">♥ Les Cœurs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-45')">Suivant &#8594;</button>
+  </div>
+  <div class="profil-hero" style="background: linear-gradient(135deg, #006080, #0097b2, #00bcd4);">
+    <div class="profil-nom">David G.</div>
+    <div class="profil-sous">Morbihan · 53 ans · Pays d'Auray</div>
+  </div>
+  <div class="profil-body">
+    <div class="profil-photos">
+      <div class="profil-photo-main">
+        <img src="https://lilikarantez.github.io/photo-DavidG/david%201.jpg" alt="David G." onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'">
+      </div>
+      <div class="profil-photos-small">
+        <div class="profil-photo-small"><img src="https://lilikarantez.github.io/photo-DavidG/david%202.jpg" alt="David G." onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'"></div>
+        <div class="profil-photo-small" style="background:var(--creme-dark);display:flex;align-items:center;justify-content:center;border-radius:8px;">
+          <span style="font-size:0.58rem;color:var(--gris);text-align:center;padding:8px;">Photo<br>à venir</span>
+        </div>
+      </div>
+    </div>
+    <div class="profil-info">
+      <div>
+        <div class="profil-section-label">En 3 mots</div>
+        <div class="profil-en3mots" style="color:#0097b2;">Attentionné · Ouvert · Bienveillant</div>
+      </div>
+      <div>
+        <div class="profil-section-label">L'amour pour lui c'est…</div>
+        <div class="profil-tags">
+          <span class="profil-tag amour">Fidélité</span>
+          <span class="profil-tag amour">Complicité</span>
+          <span class="profil-tag amour">Partage</span>
+        </div>
+      </div>
+      <div class="profil-grid">
+        <div class="profil-box"><div class="profil-box-label">Physique</div><div class="profil-box-val">1m70 · Mince · Yeux verts · Cheveux bruns</div></div>
+        <div class="profil-box"><div class="profil-box-label">Situation</div><div class="profil-box-val">Divorcé · Non-fumeur · Enfant(s) à charge</div></div>
+        <div class="profil-box"><div class="profil-box-label">Recherche</div><div class="profil-box-val">Femme · 43–55 ans</div></div>
+        <div class="profil-box"><div class="profil-box-label">Zone</div><div class="profil-box-val">Morbihan uniquement</div></div>
+      </div>
+
+      <div>
+        <div class="profil-section-label">Passions</div>
+        <div class="profil-tags">
+          <span class="profil-tag passion">🥾 Randonnée</span>
+          <span class="profil-tag passion">🎵 Musique</span>
+          <span class="profil-tag passion">🌿 Nature &amp; jardinage</span>
+          <span class="profil-tag passion">🏃 Running &amp; sport</span>
+          <span class="profil-tag passion">🎬 Cinéma</span>
+          <span class="profil-tag passion">🧘 Bien-être</span>
+        </div>
+      </div>
+
+      <div class="profil-portrait" style="border-left-color:#0097b2;">
+        <p>Quelqu'un de vrai, qui aime prendre son temps le matin et partir courir dans la nature le weekend. Il prend soin de l'autre naturellement, sans effort.</p>
+        <p>Cinquante-trois ans, les yeux verts, une silhouette mince et sportive. Le matin, un café, la douceur. Le weekend, les sentiers, l'air frais, le silence qui fait du bien. Entre les deux, la musique, le cinéma, le jardin, le bien-être.</p>
+        <p>Sensible et attentionné, il cherche quelqu'un avec qui se sentir bien — simplement, en harmonie.</p>
+        <p>« Juste quelqu'un. La bonne. »</p>
+      </div>
+
+            <div class="profil-cta" style="background:linear-gradient(135deg, #0097b2, #006080); cursor:pointer;" onclick="openModal('David G.', 'https://yp.events/b31bb691-3c34-4b20-88cc-0079f3aac80c/Mise-en-Relation-avec-DAVID-G/ticketing?from=1')">
+        💝 Me mettre en relation avec David G.
+        <span class="prix">Mise en relation · 13 €</span>
+      </div>
+      <div class="contact-bubble">
+        <div class="contact-bubble-titre">💬 Une question ? Écrivez-nous</div>
+        <form id="form-david-g" onsubmit="submitBubble(event, 'form-david-g', 'David G.')">
+          <input type="hidden" name="access_key" value="d42b8d9d-a52c-4888-a489-5dd59b1b0f5b">
+          <input type="hidden" name="subject" value="Question sur David G. - Les Cœurs Solitaires">
+          <div class="contact-bubble-row">
+            <input type="text" name="prenom" placeholder="Prénom" required>
+            <input type="text" name="nom_contact" placeholder="Nom" required>
+          </div>
+          <textarea name="message" rows="2" placeholder="Votre message…" required></textarea>
+          <button type="submit" class="contact-bubble-btn">Envoyer ✉</button>
+        </form>
+        <div class="contact-bubble-success" id="success-form-david-g">Message envoyé avec soin. ♥</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== PAGE 6b — PORTRAITS SANS PHOTO · 4 et 5 sur 9 ===== -->
+<!-- ===== PAGE NO · 3 sur 9 ===== -->
+<div class="page page-duo" id="pg-45">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-davidg')">&#8592; Précédent</button>
+    <span class="nav-brand">&#9825; Les C&#339;urs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-karine')">Suivant &#8594;</button>
+  </div>
+  <div class="duo-half">
+    <div class="duo-hero">
+      <div class="duo-nom">NO</div>
+      <div class="duo-sous">Côtes-d'Armor · 56 ans · Saint-Brieuc · Bretagne</div>
+    </div>
+    <div class="duo-body">
+      <div class="duo-left">
+        <div>
+          <div class="profil-section-label">En 3 mots</div>
+          <div class="profil-en3mots" style="font-size:1rem;">Curieux · Attentionné · Intelligent</div>
+        </div>
+        <div>
+          <div class="profil-section-label">L'amour pour lui</div>
+          <div class="profil-tags">
+            <span class="profil-tag amour">Complice</span>
+            <span class="profil-tag amour">Tactile</span>
+            <span class="profil-tag amour">Bienveillant</span>
+          </div>
+        </div>
+        <div class="profil-grid">
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Physique</div><div class="profil-box-val" style="font-size:0.68rem;">1m73 · Allure sportive</div></div>
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Recherche</div><div class="profil-box-val" style="font-size:0.68rem;">Femme · 45–55 ans</div></div>
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Zone</div><div class="profil-box-val" style="font-size:0.68rem;">Même département</div></div>
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Situation</div><div class="profil-box-val" style="font-size:0.68rem;">Célibataire · Non-fumeur</div></div>
+        </div>
+      </div>
+      <div class="duo-right">
+        
+        <div>
+          <div class="profil-section-label">Passions</div>
+          <div class="profil-tags" style="gap:3px;">
+            <span class="profil-tag passion" style="font-size:0.63rem;">🥾 Rando</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">🍽 Gastronomie</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">📚 Lecture</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">✈️ Voyage</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">👨‍🍳 Cuisine</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">🎵 Musique</span>
+          </div>
+        </div>
+      </div>
+      <div class="duo-portrait">
+        <p>Il se définit lui-même comme « un ami sur qui on peut compter ». Un Breton dans l'âme — attachiant, attentionné, généreux — qui passe ses journées entre le travail et le sport, et ses soirées à cuisiner comme un chef. Randonnée, running, gastronomie, concerts : il aime les plaisirs simples et vrais.</p>
+        <p>Ce qu'il cherche ? Une âme sœur. Une relation sérieuse, sincère et durable. Quelqu'un avec qui partager la complicité, le toucher, la bienveillance.</p>
+        <p>« Ce qu'il apporte : une relation sincère et un bon repas maison. »</p>
+      </div>
+      <div class="duo-cta" style="background:linear-gradient(135deg, var(--fuchsia), #c0156e); cursor:pointer;" onclick="openModal('NO', 'https://yp.events/de39bbff-0c4b-4a2a-bc4f-25c95dfee658/Mise-en-Relation-avec-NO-22/ticketing?from=1')">
+          💝 Me mettre en relation avec lui
+          <span class="prix">Mise en relation · 13 €</span>
+        </div>
+        <div class="contact-bubble" style="grid-column:1/-1;">
+          <div class="contact-bubble-titre">💬 Une question ? Écrivez-nous</div>
+          <form id="form-modal-lui" onsubmit="submitBubble(event, 'form-modal-lui', 'lui')">
+            <input type="hidden" name="access_key" value="d42b8d9d-a52c-4888-a489-5dd59b1b0f5b">
+            <input type="hidden" name="subject" value="Question sur lui - Les Cœurs Solitaires">
+            <div class="contact-bubble-row">
+              <input type="text" name="prenom" placeholder="Prénom" required>
+              <input type="text" name="nom_contact" placeholder="Nom" required>
+            </div>
+            <textarea name="message" rows="2" placeholder="Votre message…" required></textarea>
+            <button type="submit" class="contact-bubble-btn">Envoyer ✉</button>
+          </form>
+          <div class="contact-bubble-success" id="success-form-modal-lui">Message envoyé avec soin. ♥</div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== PAGE KARINE · 4 sur 9 ===== -->
+<div class="page" id="pg-karine">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-45')">&#8592; Précédent</button>
+    <span class="nav-brand">&#9825; Les C&#339;urs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-67')">Suivant &#8594;</button>
+  </div>
+  <div class="profil-hero" style="background: linear-gradient(135deg, #6b0050, #c0156e, #e91e8c);">
+    <div class="profil-nom">Karine</div>
+    <div class="profil-sous">C&#244;tes-d'Armor &middot; 50 ans &middot; Bretagne</div>
+  </div>
+  <div class="profil-body">
+    <div class="profil-photos">
+      <div class="profil-photo-main">
+        <img src="https://lilikarantez.github.io/photo-karine-22/karine1.jpg" alt="Karine" onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'">
+      </div>
+      <div class="profil-photos-small">
+        <div class="profil-photo-small"><img src="https://lilikarantez.github.io/photo-karine-22/karine2.jpg" alt="Karine" onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'"></div>
+        <div class="profil-photo-small"><img src="https://lilikarantez.github.io/photo-karine-22/karine3.jpg" alt="Karine" onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'"></div>
+      </div>
+    </div>
+    <div class="profil-info">
+      <div>
+        <div class="profil-section-label">En 3 mots</div>
+        <div class="profil-en3mots" style="color:#c0156e;">Dynamique &middot; Dr&#244;le &middot; Sinc&#232;re</div>
+      </div>
+      <div>
+        <div class="profil-section-label">L'amour pour elle</div>
+        <div class="profil-tags">
+          <span class="profil-tag amour">Partage</span>
+          <span class="profil-tag amour">Complicit&#233;</span>
+          <span class="profil-tag amour">Libert&#233;</span>
+        </div>
+      </div>
+      <div class="profil-grid">
+        <div class="profil-box"><div class="profil-box-label">Physique</div><div class="profil-box-val">1m50 &middot; Cheveux mi-longs &middot; Silhouette normale</div></div>
+        <div class="profil-box"><div class="profil-box-label">Situation</div><div class="profil-box-val">C&#233;libataire &middot; Pas d'enfants</div></div>
+        <div class="profil-box"><div class="profil-box-label">Recherche</div><div class="profil-box-val">Homme &middot; 50 &#224; 55 ans</div></div>
+        <div class="profil-box"><div class="profil-box-label">Zone</div><div class="profil-box-val">M&#234;me d&#233;partement</div></div>
+      </div>
+      <div>
+        <div class="profil-section-label">Passions</div>
+        <div class="profil-tags">
+          <span class="profil-tag passion">&#128062; Randonn&#233;e</span>
+          <span class="profil-tag passion">&#127914; Th&#233;&#226;tre &amp; spectacles</span>
+          <span class="profil-tag passion">&#128218; Lecture</span>
+          <span class="profil-tag passion">&#127807; Nature &amp; jardinage</span>
+          <span class="profil-tag passion">&#128062; Animaux</span>
+        </div>
+      </div>
+      <div class="profil-portrait" style="border-left-color: #c0156e;">
+        <p>Dynamique, dr&#244;le, sinc&#232;re — Karine est de celles qui ne font pas semblant. En semaine, elle se pose apr&#232;s le travail. Le weekend, elle sort, randonner, voit des amis. Il est rare qu'elle ne s'offre pas un bon sentier breton.</p>
+        <p>Dans une relation, elle est pr&#233;sente sans s'imposer. Elle appr&#233;cie la libert&#233; de chacun et les activit&#233;s partag&#233;es : une sortie, un atelier cuisine, du jardinage. Un peu maladroite, dit-elle avec humour.</p>
+        <p>Ce qu'elle cherche : quelqu'un qui aime sortir, partager des activit&#233;s, et pourquoi pas plus selon les affinit&#233;s. Ce qu'elle apporte : une pr&#233;sence sinc&#232;re, de l'&#233;coute, de la l&#233;g&#232;ret&#233;.</p>
+        <p>&#171; Recherche des moments de complicit&#233; et de partage. &#187;</p>
+      </div>
+      <div class="profil-cta" style="background: linear-gradient(135deg, #c0156e, #6b0050); cursor:pointer;" onclick="openModal('Karine', 'https://yp.events/e6014326-65fb-4b21-a4de-2b00f872240f/Mise-en-Relation-avec-KARINE-22/ticketing?from=2')">
+        &#128157; Me mettre en relation avec Karine
+        <span class="prix">Mise en relation &middot; 13 &euro;</span>
+      </div>
+      <div class="contact-bubble">
+        <div class="contact-bubble-titre">&#128172; Une question ? &#201;crivez-nous</div>
+        <form id="form-karine" onsubmit="submitBubble(event, 'form-karine', 'Karine')">
+          <input type="hidden" name="access_key" value="d42b8d9d-a52c-4888-a489-5dd59b1b0f5b">
+          <input type="hidden" name="subject" value="Question sur Karine - Les Coeurs Solitaires">
+          <div class="contact-bubble-row">
+            <input type="text" name="prenom" placeholder="Pr&#233;nom" required>
+            <input type="text" name="nom_contact" placeholder="Nom" required>
+          </div>
+          <textarea name="message" rows="2" placeholder="Votre message..." required></textarea>
+          <button type="submit" class="contact-bubble-btn">Envoyer &#9993;</button>
+        </form>
+        <div class="contact-bubble-success" id="success-form-karine">Message envoy&#233; avec soin. &#9825;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 6c — PORTRAITS SANS PHOTO · 6 et 7 sur 9 ===== -->
+<div class="page page-duo" id="pg-67">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-karine')">&#8592; Précédent</button>
+    <span class="nav-brand">♥ Les Cœurs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-l67')">Suivant &#8594;</button>
+  </div>
+  <!-- PROFIL 6 : Kitcat / Fouesnant -->
+  <div class="duo-half">
+    <div class="duo-hero" style="background: linear-gradient(135deg, #006080, #0097b2, #00bcd4);">
+      <div class="duo-nom">Kitcat</div>
+      <div class="duo-sous">Finistère · 61 ans · Fouesnant · Bretagne</div>
+    </div>
+    <div class="duo-body">
+      <div class="duo-left">
+        <div>
+          <div class="profil-section-label">En 3 mots</div>
+          <div class="profil-en3mots" style="font-size:1rem; color:#0097b2;">Curieuse · Réfléchie · Adaptable</div>
+        </div>
+        <div>
+          <div class="profil-section-label">L'amour pour elle</div>
+          <div class="profil-tags">
+            <span class="profil-tag amour">Connexion</span>
+            <span class="profil-tag amour">Complicité</span>
+            <span class="profil-tag amour">Confiance</span>
+            <span class="profil-tag amour">Passion</span>
+          </div>
+        </div>
+        <div class="profil-grid">
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Physique</div><div class="profil-box-val" style="font-size:0.68rem;">Des formes · Mèches grises</div></div>
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Zone</div><div class="profil-box-val" style="font-size:0.68rem;">Finistère → Lorient · max Brest</div></div>
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Enfants</div><div class="profil-box-val" style="font-size:0.68rem;">2 fils (jumeaux)</div></div>
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Priorités</div><div class="profil-box-val" style="font-size:0.68rem;">Communication · Confiance · Respect</div></div>
+        </div>
+      </div>
+      <div class="duo-right">
+        
+        <div>
+          <div class="profil-section-label">Passions</div>
+          <div class="profil-tags" style="gap:3px;">
+            <span class="profil-tag passion" style="font-size:0.63rem;">🏎 Sport méca</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">🌊 Bord de mer</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">🍳 Cuisine du monde</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">🧵 Couture</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">✈️ Voyage</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">🎬 Cinéma</span>
+          </div>
+        </div>
+      </div>
+      <div class="duo-portrait" style="border-left-color: #0097b2;">
+        <p>Kitcat a un rythme bien à elle : un mélange de curiosité et d'espace. Elle n'a pas envie de tout définir trop vite — elle préfère laisser la relation évoluer naturellement. Un point clé pour elle : la réciprocité. Deux personnes entières qui choisissent de se rapprocher.</p>
+        <p>Ce qu'elle cherche ? De l'éducation, du charme, quelqu'un qui a une passion qui l'anime. Une énergie. Une conversation fluide, de l'humour, de la bienveillance sincère — sans naïveté.</p>
+        <p>« La confiance, la légèreté et la complicité. »</p>
+      </div>
+      <div class="duo-cta" style="background:linear-gradient(135deg, #0097b2, #006080); cursor:pointer;" onclick="openModal('Kitcat', 'https://yp.events/82cc3978-eac3-4367-b579-5270543b2694/Mise-en-Relation-avec-KITCAT-29/ticketing?from=1')">
+          💝 Me mettre en relation avec Kitcat
+          <span class="prix">Mise en relation · 13 €</span>
+        </div>
+        <div class="contact-bubble" style="grid-column:1/-1;">
+          <div class="contact-bubble-titre">💬 Une question ? Écrivez-nous</div>
+          <form id="form-modal-kitcat" onsubmit="submitBubble(event, 'form-modal-kitcat', 'Kitcat')">
+            <input type="hidden" name="access_key" value="d42b8d9d-a52c-4888-a489-5dd59b1b0f5b">
+            <input type="hidden" name="subject" value="Question sur Kitcat - Les Cœurs Solitaires">
+            <div class="contact-bubble-row">
+              <input type="text" name="prenom" placeholder="Prénom" required>
+              <input type="text" name="nom_contact" placeholder="Nom" required>
+            </div>
+            <textarea name="message" rows="2" placeholder="Votre message…" required></textarea>
+            <button type="submit" class="contact-bubble-btn">Envoyer ✉</button>
+          </form>
+          <div class="contact-bubble-success" id="success-form-modal-kitcat">Message envoyé avec soin. ♥</div>
+        </div>
+    </div>
+  </div>
+
+  <!-- PROFIL 7 : Stéphane / Lannion -->
+  <div class="duo-half">
+    <div class="duo-hero" style="background: linear-gradient(135deg, #3a1a6e, #7b2d8b, #9b59b6);">
+      <div class="duo-nom">Stéphane</div>
+      <div class="duo-sous">Côtes-d'Armor · 50 ans · Lannion · Bretagne</div>
+    </div>
+    <div class="duo-body">
+      <div class="duo-left">
+        <div>
+          <div class="profil-section-label">En 3 mots</div>
+          <div class="profil-en3mots" style="font-size:1rem; color:#7b2d8b;">Gentil · Travailleur · Respectueux</div>
+        </div>
+        <div>
+          <div class="profil-section-label">L'amour pour lui</div>
+          <div class="profil-tags">
+            <span class="profil-tag amour">Sentiments</span>
+            <span class="profil-tag amour">Tendresse</span>
+            <span class="profil-tag amour">Fidélité</span>
+          </div>
+        </div>
+        <div class="profil-grid">
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Physique</div><div class="profil-box-val" style="font-size:0.68rem;">1m78 · Sportif · Barbe 3 jours</div></div>
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Recherche</div><div class="profil-box-val" style="font-size:0.68rem;">Femme · 46–54 ans</div></div>
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Zone</div><div class="profil-box-val" style="font-size:0.68rem;">Lannion · agglomération</div></div>
+          <div class="profil-box" style="padding:5px 8px;"><div class="profil-box-label">Situation</div><div class="profil-box-val" style="font-size:0.68rem;">Célibataire · 3 enfants majeurs</div></div>
+        </div>
+      </div>
+      <div class="duo-right">
+        
+        <div>
+          <div class="profil-section-label">Passions</div>
+          <div class="profil-tags" style="gap:3px;">
+            <span class="profil-tag passion" style="font-size:0.63rem;">🏐 Volleyball</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">🥾 Rando</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">✈️ Voyage</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">♟ Jeux de société</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">🎵 Musique</span>
+            <span class="profil-tag passion" style="font-size:0.63rem;">✨ Astrologie</span>
+          </div>
+        </div>
+      </div>
+      <div class="duo-portrait" style="border-left-color: #7b2d8b;">
+        <p>Papa de trois grands enfants, entraîneur de volleyball, logisticien sur les routes bretonnes — Stéphane est quelqu'un de simple, bienveillant et tenace. On le trouve plus facilement au gymnase que devant un écran.</p>
+        <p>Sentimental et sensible, il assume sans complexe de pleurer devant un Disney. Ce qu'il cherche ? Une compagne de vie qui fera battre son cœur, qui le challengera. Présente, avec des valeurs communes de respect et d'empathie.</p>
+        <p>« Curieux de tout, et prêt pour la plus belle aventure. »</p>
+      </div>
+      <div class="duo-cta" style="background:linear-gradient(135deg, #7b2d8b, #3a1a6e); cursor:pointer;" onclick="openModal('St\u00e9phane', 'https://yp.events/ccde4bca-5493-4afa-99f8-f53597acfded/Mise-en-Relation-avec-STEPHANE-22/ticketing?from=1')">
+          💝 Me mettre en relation avec Stéphane
+          <span class="prix">Mise en relation · 13 €</span>
+        </div>
+        <div class="contact-bubble" style="grid-column:1/-1;">
+          <div class="contact-bubble-titre">💬 Une question ? Écrivez-nous</div>
+          <form id="form-modal-stephane" onsubmit="submitBubble(event, 'form-modal-stephane', 'St\u00e9phane')">
+            <input type="hidden" name="access_key" value="d42b8d9d-a52c-4888-a489-5dd59b1b0f5b">
+            <input type="hidden" name="subject" value="Question sur Stéphane - Les Cœurs Solitaires">
+            <div class="contact-bubble-row">
+              <input type="text" name="prenom" placeholder="Prénom" required>
+              <input type="text" name="nom_contact" placeholder="Nom" required>
+            </div>
+            <textarea name="message" rows="2" placeholder="Votre message…" required></textarea>
+            <button type="submit" class="contact-bubble-btn">Envoyer ✉</button>
+          </form>
+          <div class="contact-bubble-success" id="success-form-modal-stephane">Message envoyé avec soin. ♥</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 6d — PORTRAIT SANS PHOTO · 8 sur 9 ===== -->
+<div class="page" id="pg-l67">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-67')">&#8592; Précédent</button>
+    <span class="nav-brand">♥ Les Cœurs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-seaside')">Suivant &#8594;</button>
+  </div>
+  <div class="profil-hero" style="background: linear-gradient(135deg, #5a1a1a, #8b2e2e, #c0406e);">
+    <div class="profil-nom">Laurent67</div>
+    <div class="profil-sous">Côtes-d'Armor · 50 ans · Caulnes · Bretagne</div>
+  </div>
+  <div style="padding: 22px 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+      <div class="profil-section-label" style="margin:0; width:100%;">En 3 mots</div>
+      <div class="profil-en3mots" style="color:#8b2e2e;">Alsacien · Exilé · Breton de cœur</div>
+    </div>
+    <div>
+      <div class="profil-section-label">L'amour pour lui</div>
+      <div class="profil-tags">
+        <span class="profil-tag amour">Échange simple</span>
+        <span class="profil-tag amour">Présence</span>
+        <span class="profil-tag amour">Amour sincère</span>
+      </div>
+    </div>
+    <div class="profil-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="profil-box"><div class="profil-box-label">Physique</div><div class="profil-box-val">1m90 · Yeux marrons · Blond</div></div>
+      <div class="profil-box"><div class="profil-box-label">Situation</div><div class="profil-box-val">Divorcé · Enfants majeurs</div></div>
+      <div class="profil-box"><div class="profil-box-label">Recherche</div><div class="profil-box-val">Femme · 40–54 ans</div></div>
+      <div class="profil-box"><div class="profil-box-label">Zone</div><div class="profil-box-val">Caulnes · Mobilité selon personne</div></div>
+    </div>
+    <div>
+      <div class="profil-section-label">Passions</div>
+      <div class="profil-tags">
+        <span class="profil-tag passion">🥾 Randonnée</span>
+        <span class="profil-tag passion">🍽 Gastronomie</span>
+        <span class="profil-tag passion">🎭 Théâtre</span>
+        <span class="profil-tag passion">📚 Lecture</span>
+        <span class="profil-tag passion">✈️ Voyage</span>
+        <span class="profil-tag passion">🌿 Jardinage</span>
+        <span class="profil-tag passion">🐾 Animaux</span>
+        <span class="profil-tag passion">🏃 Running</span>
+        <span class="profil-tag passion">🎬 Cinéma</span>
+        <span class="profil-tag passion">🍷 Vins</span>
+        <span class="profil-tag passion">🎭 Humour</span>
+      </div>
+    </div>
+    <div class="profil-portrait" style="border-left-color: #8b2e2e;">
+      <p>Alsacien exilé en Bretagne — il aime dire qu'il cherche une personne qui réunira les deux bouts de la France. Grand, discret, il ne parle pas beaucoup mais a beaucoup de choses à partager. C'est souvent le cas de ceux qui observent avant de parler.</p>
+      <p>Sa vie est faite de contrastes : parfois pépère, parfois overbooké. Il aime le calme autant que les activités — le sport, le cinéma, le théâtre. Et un détail qui dit tout de lui : son attachement aux Wampas, ce groupe de rock français qui fait rire et qui griffe à la fois.</p>
+      <p>Ce qu'il cherche ? Celle qui lui correspond. Avec qui il sera bien. Qui saura le comprendre et à qui il pourra apporter de belles choses.</p>
+      <p>« Je suis quelqu'un qui sait être présent, apporter du soutien et de l'amour. »</p>
+    </div>
+    <div class="profil-cta" style="background:linear-gradient(135deg, #c0406e, #8b2e2e); cursor:pointer;" onclick="openModal('Laurent67', 'https://yp.events/0cd5abaa-bbbf-489d-bb5e-8db657637358/Mise-en-Relation-avec-LAURENT67-22/ticketing?from=1')">
+      💝 Me mettre en relation avec Laurent67
+      <span class="prix">Mise en relation · 13 €</span>
+    </div>
+    <div class="contact-bubble">
+      <div class="contact-bubble-titre">💬 Une question ? Écrivez-nous</div>
+      <form id="form-laurent67" onsubmit="submitBubble(event, 'form-laurent67', 'Laurent67')">
+        <input type="hidden" name="access_key" value="d42b8d9d-a52c-4888-a489-5dd59b1b0f5b">
+        <input type="hidden" name="subject" value="Question sur Laurent67 - Les Cœurs Solitaires">
+        <div class="contact-bubble-row">
+          <input type="text" name="prenom" placeholder="Prénom" required>
+          <input type="text" name="nom_contact" placeholder="Nom" required>
+        </div>
+        <textarea name="message" rows="2" placeholder="Votre message…" required></textarea>
+        <button type="submit" class="contact-bubble-btn">Envoyer ✉</button>
+      </form>
+      <div class="contact-bubble-success" id="success-form-laurent67">Message envoyé avec soin. ♥</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 6e — PORTRAIT SANS PHOTO · 9 sur 9 ===== -->
+<div class="page" id="pg-seaside">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-l67')">&#8592; Précédent</button>
+    <span class="nav-brand">♥ Les Cœurs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-jacky')">Suivant &#8594;</button>
+  </div>
+  <div class="profil-hero" style="background: linear-gradient(135deg, #004d6e, #0077a8, #00bcd4);">
+    <div class="profil-nom">Seaside</div>
+    <div class="profil-sous">Morbihan · 65 ans · Littoral breton</div>
+  </div>
+  <div style="padding: 22px 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+    <div>
+      <div class="profil-section-label">En 3 mots</div>
+      <div class="profil-en3mots" style="color:#0077a8;">Généreuse · Fiable · Positive</div>
+    </div>
+    <div>
+      <div class="profil-section-label">L'amour pour elle</div>
+      <div class="profil-tags">
+        <span class="profil-tag amour">Tendresse</span>
+        <span class="profil-tag amour">Complicité</span>
+        <span class="profil-tag amour">Fous rires</span>
+        <span class="profil-tag amour">Escapades</span>
+      </div>
+    </div>
+    <div class="profil-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="profil-box"><div class="profil-box-label">Physique</div><div class="profil-box-val">1m65 · 50 kg · Yeux bleu marine · Cheveux châtains</div></div>
+      <div class="profil-box"><div class="profil-box-label">Situation</div><div class="profil-box-val">Célibataire · Retraitée · Non-fumeuse · Enfants majeurs</div></div>
+      <div class="profil-box"><div class="profil-box-label">Recherche</div><div class="profil-box-val">Homme · 58–70 ans</div></div>
+      <div class="profil-box"><div class="profil-box-label">Zone</div><div class="profil-box-val">Morbihan · Même département</div></div>
+    </div>
+    <div>
+      <div class="profil-section-label">Passions</div>
+      <div class="profil-tags">
+        <span class="profil-tag passion">🌊 Mer &amp; voile</span>
+        <span class="profil-tag passion">🥾 Randonnée</span>
+        <span class="profil-tag passion">🎵 Musique</span>
+        <span class="profil-tag passion">✈️ Voyage</span>
+        <span class="profil-tag passion">🎨 Arts créatifs</span>
+        <span class="profil-tag passion">🎬 Cinéma</span>
+        <span class="profil-tag passion">🧘 Yoga &amp; méditation</span>
+        <span class="profil-tag passion">🎸 Concerts</span>
+        <span class="profil-tag passion">✨ Bien-être</span>
+      </div>
+    </div>
+    <div class="profil-portrait" style="border-left-color: #0077a8;">
+      <p>Elle marche les pieds dans l'eau chaque matin. Ce détail dit tout de Seaside : un ancrage au littoral breton, une légèreté dans le corps, une façon de commencer les jours en beauté. Soixante-cinq ans, les yeux bleu marine, l'énergie d'une femme qui sait ce qu'elle veut.</p>
+      <p>Retraitée, elle consacre son temps aux choses qui comptent vraiment : les grandes marches en bord de mer, son petit-fils qu'elle chérit, et une curiosité intacte pour le monde. Généreuse, fiable, positive — et avec « des grains de folie », précise-t-elle avec un sourire.</p>
+      <p>Ce qu'elle cherche ? Partager des petits riens, des escapades, des découvertes. Des fous rires. De la tendresse et de la complicité. Pas de grand discours — juste une présence vraie, attentive, légère.</p>
+      <p>« Un printemps surprenant. »</p>
+    </div>
+    <div class="profil-cta" style="background:linear-gradient(135deg, #0077a8, #004d6e); cursor:pointer;" onclick="openModal('Seaside', 'https://yp.events/704d4e82-57ff-4c46-ab4a-07d56eb04c7a/Mise-en-Relation-avec-SEASIDE-56/ticketing?from=1')">
+      💝 Me mettre en relation avec Seaside
+      <span class="prix">Mise en relation · 13 €</span>
+    </div>
+    <div class="contact-bubble">
+      <div class="contact-bubble-titre">💬 Une question ? Écrivez-nous</div>
+      <form id="form-seaside" onsubmit="submitBubble(event, 'form-seaside', 'Seaside')">
+        <input type="hidden" name="access_key" value="d42b8d9d-a52c-4888-a489-5dd59b1b0f5b">
+        <input type="hidden" name="subject" value="Question sur Seaside - Les Cœurs Solitaires">
+        <div class="contact-bubble-row">
+          <input type="text" name="prenom" placeholder="Prénom" required>
+          <input type="text" name="nom_contact" placeholder="Nom" required>
+        </div>
+        <textarea name="message" rows="2" placeholder="Votre message…" required></textarea>
+        <button type="submit" class="contact-bubble-btn">Envoyer ✉</button>
+      </form>
+      <div class="contact-bubble-success" id="success-form-seaside">Message envoyé avec soin. ♥</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE JACKY · 9 sur 9 ===== -->
+<div class="page" id="pg-jacky">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-seaside')">&#8592; Précédent</button>
+    <span class="nav-brand">&#9825; Les Cœurs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-articles')">Suivant &#8594;</button>
+  </div>
+  <div class="profil-hero" style="background: linear-gradient(135deg, #1a4a1a, #2e7d32, #66bb6a);">
+    <div class="profil-nom">Jacky</div>
+    <div class="profil-sous">Finistère · 65 ans · Plouégat-Guerrand · Bretagne</div>
+  </div>
+  <div class="profil-body">
+    <div class="profil-photos">
+      <div class="profil-photo-main">
+        <img src="https://lilikarantez.github.io/photo-jacky-22/jacky1.jpg" alt="Jacky" onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'">
+      </div>
+      <div class="profil-photos-small">
+        <div class="profil-photo-small"><img src="https://lilikarantez.github.io/photo-jacky-22/jacky2.jpg" alt="Jacky" onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'"></div>
+        <div class="profil-photo-small"><img src="https://lilikarantez.github.io/photo-jacky-22/jacky3.jpg" alt="Jacky" onerror="this.style.display='none';this.parentNode.style.background='var(--creme-dark)'"></div>
+      </div>
+    </div>
+    <div class="profil-info">
+      <div>
+        <div class="profil-section-label">En 3 mots</div>
+        <div class="profil-en3mots" style="color:#2e7d32;">Vrai · Dynamique · Libre</div>
+      </div>
+      <div>
+        <div class="profil-section-label">L'amour pour lui</div>
+        <div class="profil-tags">
+          <span class="profil-tag amour">Projets à deux</span>
+          <span class="profil-tag amour">Complicité</span>
+          <span class="profil-tag amour">Liberté</span>
+          <span class="profil-tag amour">Action</span>
+        </div>
+      </div>
+      <div class="profil-grid">
+        <div class="profil-box"><div class="profil-box-label">Physique</div><div class="profil-box-val">1m68 · Yeux marrons · Brun</div></div>
+        <div class="profil-box"><div class="profil-box-label">Situation</div><div class="profil-box-val">Divorcé · Retraité · Non-fumeur · Enfants majeurs</div></div>
+        <div class="profil-box"><div class="profil-box-label">Recherche</div><div class="profil-box-val">Femme · 55 à 70 ans</div></div>
+        <div class="profil-box"><div class="profil-box-label">Zone</div><div class="profil-box-val">Toute la Bretagne</div></div>
+      </div>
+      <div>
+        <div class="profil-section-label">Passions</div>
+        <div class="profil-tags">
+          <span class="profil-tag passion">🥾 Randonnée</span>
+          <span class="profil-tag passion">🎭 Théâtre &amp; spectacles</span>
+          <span class="profil-tag passion">📚 Lecture</span>
+          <span class="profil-tag passion">🎵 Musique</span>
+          <span class="profil-tag passion">✈️ Voyage</span>
+          <span class="profil-tag passion">🎬 Cinéma</span>
+          <span class="profil-tag passion">🎸 Concerts</span>
+          <span class="profil-tag passion">📷 Photo</span>
+          <span class="profil-tag passion">⛺ Camping &amp; plein air</span>
+          <span class="profil-tag passion">♟ Jeux de société</span>
+          <span class="profil-tag passion">😄 Humour &amp; impro</span>
+          <span class="profil-tag passion">🧗 Escalade</span>
+        </div>
+      </div>
+      <div class="profil-portrait" style="border-left-color: #2e7d32;">
+        <p>Jacky a une façon bien à lui de se présenter : retraité libre, plein de belles choses à vivre. Pas de nostalgie, pas de bilan — juste l'appétit d'un homme qui regarde devant. Soixante-cinq ans, les enfants grands, toute la liberté retrouvée.</p>
+        <p>Très dynamique, il aime avoir des occupations et voyager. Sa devise ? Action, réaction. Il n'attend pas que les choses arrivent : il les fait arriver. Randonnée, escalade, théâtre, photo, camping, jeux de société — une curiosité sans frontières, une énergie concrète.</p>
+        <p>Ce qu'il cherche : une femme dynamique, pour construire des projets à deux. Ce qu'il apporte : quelqu'un de vrai. Simple, direct, sincère.</p>
+        <p>« Je suis là pour une relation durable. »</p>
+      </div>
+      <div class="profil-cta" style="background:linear-gradient(135deg, #2e7d32, #1a4a1a); cursor:pointer;" onclick="openModal('Jacky', 'https://yp.events/9e84296c-5d93-4a45-8628-3d8de8ade1d1/Mise-en-Relation-avec-JACKY-22/ticketing?from=1')">
+        💝 Me mettre en relation avec Jacky
+        <span class="prix">Mise en relation · 13 €</span>
+      </div>
+      <div class="contact-bubble">
+        <div class="contact-bubble-titre">💬 Une question ? Écrivez-nous</div>
+        <form id="form-jacky" onsubmit="submitBubble(event, 'form-jacky', 'Jacky')">
+          <input type="hidden" name="access_key" value="d42b8d9d-a52c-4888-a489-5dd59b1b0f5b">
+          <input type="hidden" name="subject" value="Question sur Jacky - Les Coeurs Solitaires">
+          <div class="contact-bubble-row">
+            <input type="text" name="prenom" placeholder="Prénom" required>
+            <input type="text" name="nom_contact" placeholder="Nom" required>
+          </div>
+          <textarea name="message" rows="2" placeholder="Votre message..." required></textarea>
+          <button type="submit" class="contact-bubble-btn">Envoyer ✉</button>
+        </form>
+        <div class="contact-bubble-success" id="success-form-jacky">Message envoyé avec soin. ♥</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE ARTICLES ===== -->
+<div class="page" id="pg-articles">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-jacky')">&#8592; Précédent</button>
+    <span class="nav-brand">&#9825; Les C&#339;urs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-comment')">Suivant &#8594;</button>
+  </div>
+
+  <!-- EN-TÊTE MAGAZINE -->
+  <div style="padding:14px 32px 12px; border-bottom:3px solid var(--noir); display:flex; align-items:flex-end; justify-content:space-between;">
+    <div style="font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:600; color:var(--noir);">Vie &amp; <em style="color:var(--violet);">Rencontres</em></div>
+    <div style="font-size:0.5rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gris);">Les C&#339;urs Solitaires &middot; N&#176;&nbsp;6 &middot; Avril 2026</div>
+  </div>
+
+  <!-- ARTICLE 1 — pleine largeur -->
+  <div style="padding:14px 32px 12px; border-bottom:2px solid var(--noir);">
+    <div style="display:flex; gap:6px; align-items:center; margin-bottom:6px;">
+      <span style="font-size:0.5rem; letter-spacing:0.2em; text-transform:uppercase; background:var(--violet); color:white; padding:2px 8px; border-radius:20px;">Rencontres</span>
+    </div>
+    <div style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--noir); line-height:1.2; margin-bottom:4px;">Les signaux qui ne trompent pas dès le premier soir</div>
+    <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.82rem; color:var(--gris); line-height:1.5; margin-bottom:10px; padding-left:12px; border-left:3px solid var(--creme-dark);">Ces signaux d'alarme que notre instinct détecte bien avant que notre raison ne les formule.</div>
+    <div style="columns:2; column-gap:24px; font-size:0.81rem; line-height:1.92; color:#2e2e2e;"><p style="margin-bottom:10px;">Vous rentrez d'un premier rendez-vous avec une drôle de sensation dans l'estomac. Pas la bonne. Quelque chose clochait pendant la soirée, mais vous n'arrivez pas à mettre le doigt dessus. Vous vous dites que vous exagérez peut-être. Que vous êtes trop méfiant. Que personne n'est parfait. Bienvenue dans l'univers des red flags. Ce sont ces signaux d'alarme que notre instinct détecte bien avant que notre raison ne les formule.</p>
+<p style="margin-bottom:10px;">Un red flag n'est pas forcément un comportement spectaculaire. Il ne s'annonce pas avec une pancarte. Il se glisse dans une conversation banale, dans un détail qui passe presque inaperçu. Il coupe la parole sans s'en rendre compte. Elle parle de son ex avec une amertume encore très fraîche. Il minimise vos centres d'intérêt d'un sourire légèrement condescendant. Il répond à votre message une heure après, puis disparaît trois jours. Rien d'explosif en apparence. Mais quelque chose qui, répété dans le temps, peut devenir pesant ou toxique.</p>
+<p style="margin-bottom:10px;">Certains signaux méritent une attention particulière. Le surinvestissement émotionnel très rapide en est un. Les déclarations du type «&#8239;je n'ai jamais ressenti ça aussi vite&#8239;» dès le troisième message doivent alerter. Ce n'est pas du romantisme. C'est souvent une stratégie inconsciente pour créer une dépendance rapide. Le manque de respect des limites dès le premier soir en est un autre. Une personne qui insiste après un refus, même gentiment, montre qu'elle place ses désirs au-dessus de vos besoins. C'est un signal fort.</p>
+<p style="margin-bottom:10px;">Il y a aussi les incompatibilités fondamentales. Elles ne sont pas toujours des red flags au sens strict, mais elles méritent d'être prises au sérieux. Une vision du monde radicalement opposée sur des sujets qui comptent pour vous, comme la famille, les enfants ou les valeurs de vie, ne se négocie pas avec le temps. L'amour ne suffit pas toujours à combler ces écarts. Mieux vaut les identifier tôt que de les découvrir après plusieurs mois d'investissement émotionnel.</p>
+<p style="margin-bottom:10px;">La tendance à se poser en victime de toutes ses relations passées est également un signal à surveiller. Si chacun de ses ex est présenté comme fou, instable ou ingrat, posez-vous une question simple. Quelle est la seule constante dans toutes ces histoires&#8239;? Cette personne elle-même. Ce n'est pas une condamnation. Mais c'est une information utile.</p>
+<p style="margin-bottom:10px;">Attention cependant à l'excès inverse. Chasser les red flags à la loupe peut virer à la paranoïa. Tout le monde a des maladresses un soir de stress. Un silence gênant n'est pas un red flag. Une blague ratée non plus. Le perfectionnisme amoureux conduit à éliminer des personnes sincères pour de mauvaises raisons.</p>
+<p style="margin-bottom:10px;">Il faut donc trouver un équilibre. La bonne posture est celle de l'observation bienveillante. Vous observez, vous notez, vous laissez le temps faire son travail. Un comportement isolé peut s'expliquer. Un comportement répété devient une information fiable.</p>
+<p style="margin-bottom:10px;">La meilleure boussole reste votre propre corps. Une légère tension dans la poitrine après la soirée. Une envie de fuir que vous rationalisez. Ces sensations sont précieuses. Elles ne signifient pas forcément qu'il faut partir immédiatement. Mais elles méritent d'être écoutées avec sérieux. Votre instinct a souvent un temps d'avance sur votre liste de critères idéaux. Apprenez à lui faire confiance.</p></div>
+  </div>
+
+  <!-- ARTICLES 2 ET 3 côte à côte -->
+  <div style="display:grid; grid-template-columns:1fr 1px 1fr;">
+    <div style="padding:12px 20px 12px 32px;">
+      <div style="display:flex; gap:6px; align-items:center; margin-bottom:6px;">
+        <span style="font-size:0.5rem; letter-spacing:0.2em; text-transform:uppercase; background:var(--turquoise); color:white; padding:2px 8px; border-radius:20px;">Digital</span>
+      </div>
+      <div style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--noir); line-height:1.2; margin-bottom:3px;">Ghosting, breadcrumbing, orbiting</div>
+      <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.8rem; color:var(--turquoise); margin-bottom:8px;">Le lexique du dating moderne décrypté</div>
+      <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.76rem; color:var(--gris); line-height:1.5; margin-bottom:8px; padding-left:8px; border-left:2px solid var(--creme-dark);">Ces comportements ont toujours existé. Les applis n'ont fait qu'en amplifier la portée.</div>
+      <div style="font-size:0.81rem; line-height:1.92; color:#2e2e2e;"><p style="margin-bottom:10px;">Le vocabulaire amoureux s'est considérablement enrichi ces dernières années. Il s'est doté d'un jargon aussi créatif qu'inquiétant. Vous vous êtes peut-être demandé pourquoi quelqu'un avait disparu du jour au lendemain sans un mot d'explication. Ou pourquoi une personne continuait à liker vos photos sans jamais vous donner signe de vie autrement. Vous avez probablement été victime de l'un de ces comportements. Ils ont un nom. Les nommer, c'est déjà reprendre un peu de pouvoir.</p>
+<p style="margin-bottom:10px;">Le <strong>ghosting</strong> est sans doute le plus connu. Il consiste à disparaître brutalement. Plus de réponse, plus de nouvelles, comme si vous n'aviez jamais existé dans la vie de l'autre. Pas de message d'explication, pas de rupture formelle. Juste le silence. Ce comportement est particulièrement douloureux parce qu'il prive la personne ghostée de toute possibilité de comprendre ce qui s'est passé. Le cerveau humain déteste le vide. Il cherche une raison. Il en invente souvent une mauvaise.</p>
+<p style="margin-bottom:10px;">Le <strong>breadcrumbing</strong> est plus subtil et, dans un sens, plus pervers. Le terme vient de Hansel et Gretel. L'autre sème des miettes pour vous garder sur le chemin sans jamais vous amener à destination. Un message chaleureux par semaine. Un like au bon moment. Un compliment inattendu après plusieurs jours de silence. Juste assez pour que vous ne partiez pas. Juste assez pour entretenir l'incertitude.</p>
+<p style="margin-bottom:10px;">L'<strong>orbiting</strong> est le cousin numérique du ghosting. La personne a disparu de votre vie réelle et concrète. Pourtant, elle continue de graviter autour de votre existence sur les réseaux sociaux. Elle regarde vos stories dans les premières minutes après publication. Elle like vos publications de temps en temps. Elle ne vous écrit jamais directement. C'est une présence fantôme.</p>
+<p style="margin-bottom:10px;">D'autres comportements ont émergé avec la multiplication des applications de rencontre. Le <strong>benching</strong> consiste à vous garder en banc de touche. Vous êtes une option, pas une priorité. Le <strong>slow fading</strong> est une disparition progressive et calculée. Le <strong>zombying</strong> désigne le retour soudain d'une personne disparue depuis longtemps, comme si rien ne s'était passé.</p>
+<p style="margin-bottom:10px;">Le <strong>love bombing</strong> occupe une place à part. C'est un excès d'attention et d'affection en début de relation. Cadeaux, messages constants, déclarations intenses très rapidement. Cela ressemble à du romantisme. C'est souvent une stratégie de contrôle.</p>
+<p style="margin-bottom:10px;">Nommer ces comportements, c'est refuser de les normaliser. C'est comprendre que la disparition de l'autre n'est pas un jugement sur votre valeur. C'est comprendre que vous méritez une communication claire et respectueuse. Et c'est vous donner les outils pour ne plus attendre quelqu'un qui a décidé de ne pas être là.</p></div>
+    </div>
+    <div style="background:var(--creme-dark);"></div>
+    <div style="padding:12px 32px 12px 20px;">
+      <div style="display:flex; gap:6px; align-items:center; margin-bottom:6px;">
+        <span style="font-size:0.5rem; letter-spacing:0.2em; text-transform:uppercase; background:#c0406e; color:white; padding:2px 8px; border-radius:20px;">Bien-être</span>
+      </div>
+      <div style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--noir); line-height:1.2; margin-bottom:3px;">Se reconstruire après une rupture</div>
+      <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.8rem; color:#c0406e; margin-bottom:8px;">Les 5 étapes qui font vraiment du bien</div>
+      <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.76rem; color:var(--gris); line-height:1.5; margin-bottom:8px; padding-left:8px; border-left:2px solid var(--creme-dark);">Se reconstruire ne signifie pas effacer. Cela signifie réapprendre à habiter sa propre vie.</div>
+      <div style="font-size:0.81rem; line-height:1.92; color:#2e2e2e;"><p style="margin-bottom:10px;">Une rupture, même attendue, même souhaitée, même nécessaire, laisse un vide. Pas forcément le vide de l'autre en tant que personne. Parfois le vide d'une routine construite ensemble. Le vide d'un projet commun qui n'aura pas lieu. Le vide d'une identité forgée à deux et qui doit maintenant être repensée seul. Se reconstruire ne signifie pas effacer. Cela signifie réapprendre à habiter sa propre vie, à son propre rythme.</p>
+<p style="margin-bottom:10px;">La première étape est de laisser venir les émotions sans les combattre. Inutile de faire semblant que tout va bien. Les émotions non accueillies ne disparaissent pas. Elles fermentent. Pleurez si vous en avez besoin. Restez sous la couette un samedi matin. Parlez-en à une personne de confiance. La tristesse traverse plus vite quand on ne lui résiste pas.</p>
+<p style="margin-bottom:10px;">La deuxième étape est de couper les liens numériques, au moins temporairement. Surveiller le compte Instagram de votre ex revient à gratter une plaie chaque matin. Mettez en sourdine les réseaux sociaux de l'autre. Bloquez si nécessaire. Ce n'est pas de la lâcheté. Ce n'est pas de la haine. C'est une décision de santé émotionnelle.</p>
+<p style="margin-bottom:10px;">La troisième étape est de réinvestir votre corps. Le sport, même modéré, libère des endorphines qui améliorent l'humeur de façon mesurable. Le sommeil régulier stabilise les émotions. Prendre soin de son corps envoie un message puissant à son propre cerveau. Vous comptez. Votre bien-être compte.</p>
+<p style="margin-bottom:10px;">La quatrième étape est de renouer avec vous-même. Qu'est-ce que vous aimiez faire avant la relation&#8239;? Quelle passion avez-vous progressivement mise de côté&#8239;? La vie à deux implique souvent des compromis invisibles. La rupture est douloureuse. Mais elle est aussi l'occasion de récupérer des pans entiers de votre vie.</p>
+<p style="margin-bottom:10px;">La cinquième étape est d'accepter que la reconstruction ne soit pas linéaire. Il y aura des jours où vous vous sentirez bien. Et puis un morceau de musique, une odeur ou une rue familière ramèneront tout d'un coup. Ce n'est pas un signe d'échec. C'est simplement la façon dont fonctionne la mémoire émotionnelle.</p>
+<p style="margin-bottom:10px;">Se reconstruire après une rupture, c'est un travail. Mais c'est aussi une opportunité rare de se retrouver soi-même. Peu de gens en ressortent exactement pareils. La plupart en ressortent un peu plus grands.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== PAGE 6 — COMMENT ÇA MARCHE ===== -->
+<div class="page" id="pg-comment">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-articles')">&#8592; Précédent</button>
+    <span class="nav-brand">♥ Les Cœurs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-agenda')">Suivant &#8594;</button>
+  </div>
+  <div class="comment-hero">
+    <div class="comment-hero-icon">💌</div>
+    <div class="comment-hero-titre">Comment se déroule<br>la <span class="italic">mise en relation ?</span></div>
+    <div class="comment-hero-sub">Un processus humain, bienveillant et confidentiel — pensé pour vous.</div>
+  </div>
+  <div class="comment-steps">
+    <div class="comment-step">
+      <div class="comment-step-num">①</div>
+      <div>
+        <div class="comment-step-titre">Vous réservez votre mise en relation · 13 €</div>
+        <div class="comment-step-texte">Via Yurplan (paiement sécurisé) ou PayPal. Simple, rapide, confidentiel.</div>
+      </div>
+    </div>
+    <div class="comment-step">
+      <div class="comment-step-num">②</div>
+      <div>
+        <div class="comment-step-titre">Lili vous contacte personnellement sous 48h</div>
+        <div class="comment-step-texte">Par email ou téléphone, pour faire connaissance et comprendre vos attentes.</div>
+      </div>
+    </div>
+    <div class="comment-step">
+      <div class="comment-step-num">③</div>
+      <div>
+        <div class="comment-step-titre">Vous complétez un questionnaire</div>
+        <div class="comment-step-texte">Pour affiner la mise en relation et s'assurer de la compatibilité.</div>
+      </div>
+    </div>
+    <div class="comment-step">
+      <div class="comment-step-num">④</div>
+      <div>
+        <div class="comment-step-titre">Si les deux parties sont partantes</div>
+        <div class="comment-step-texte">Lili organise l'échange des coordonnées avec bienveillance et discrétion.</div>
+      </div>
+    </div>
+    <div class="comment-step">
+      <div class="comment-step-num">⑤</div>
+      <div>
+        <div class="comment-step-titre">La suite vous appartient 🌿</div>
+        <div class="comment-step-texte">En toute liberté, à votre rythme, dans la bienveillance.</div>
+      </div>
+    </div>
+  </div>
+  <div class="comment-banniere">
+    <div class="comment-valeur">Confidentiel</div>
+    <div class="comment-valeur">Discret</div>
+    <div class="comment-valeur">Humain</div>
+  </div>
+  <div class="comment-paiement">
+    
+    
+  </div>
+</div>
+
+<!-- ===== PAGE 7 — AGENDA ===== -->
+<div class="page" id="pg-agenda">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-comment')">&#8592; Pr&#233;c&#233;dent</button>
+    <span class="nav-brand">&#9825; Les C&#339;urs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-contact')">Suivant &#8594;</button>
+  </div>
+  <div class="agenda-hero">
+    <div class="agenda-hero-titre">Nos <span class="italic">&#201;v&#233;nements</span></div>
+    <div class="agenda-hero-sub">Din&#233;rs entre inconnus · Soir&#233;es rencontres · Salons · Grand Ouest</div>
+  </div>
+  <div class="agenda-grid">
+    <div class="agenda-item special">
+      <div class="agenda-badge">&#128293; Ce vendredi</div>
+      <div class="agenda-ville">Brest</div>
+      <div class="agenda-date">Vendredi 27 mars 2026</div>
+      <div class="agenda-type">Soir&#233;e rencontres · Finist&#232;re</div>
+      <div class="agenda-cta-small"><a href="https://ypl.me/Q1B" target="_blank">S'inscrire &#8594;</a></div>
+    </div>
+    <div class="agenda-item special">
+      <div class="agenda-badge">&#128285; Bient&#244;t</div>
+      <div class="agenda-ville">Larmor-Plage</div>
+      <div class="agenda-date">Jeudi 2 avril 2026</div>
+      <div class="agenda-type">Soir&#233;e rencontres · Morbihan</div>
+      <div class="agenda-cta-small"><a href="https://ypl.me/PKY" target="_blank">S'inscrire &#8594;</a></div>
+    </div>
+  </div>
+
+  <!-- ARTICLE SALON DE VANNES -->
+  <div style="margin:0 28px 20px; border-top:2px solid var(--noir); padding-top:16px;">
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
+      <span style="font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--fuchsia);font-weight:500;">&#201;v&#233;nement</span>
+      <span style="font-size:0.52rem;color:var(--gris);">&#8212;</span>
+      <span style="font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris);">6 juin 2026 · Vannes</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--noir);line-height:1.2;margin-bottom:8px;">Le Grand Rendez-Vous<br><em style="color:var(--fuchsia);">des C&#339;urs Solitaires</em></div>
+        <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:0.82rem;color:var(--gris);line-height:1.55;margin-bottom:10px;">Pour la premi&#232;re fois en Bretagne, un salon enti&#232;rement d&#233;di&#233; &#224; la rencontre c&#233;libataire. Une journ&#233;e pour oser, pour s'ouvrir, pour se laisser surprendre.</div>
+        <div style="font-size:0.77rem;line-height:1.82;color:#3a3a3a;">
+          <p style="margin-bottom:6px;">Samedi 6 juin 2026 &#224; la Maison Flow de Vannes, les C&#339;urs Solitaires organisent leur 1er Salon de la Rencontre C&#233;libataire. Une journ&#233;e con&#231;ue pour ceux qui en ont assez de swiper dans le vide, et qui veulent rencontrer des gens vrais, dans un cadre chaleureux et bienveillant.</p>
+          <p>Ateliers, conc&#233;rences, espaces de rencontre, portraits myst&#232;re en live&#160;&#8212; tout est pens&#233; pour cr&#233;er des conditions favorables &#224; la rencontre authentique. Plus de 250 participants attendus.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:linear-gradient(135deg,#fff0f8,#fdf5ff);border-radius:10px;padding:14px 16px;border-left:3px solid var(--fuchsia);">
+          <div style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--fuchsia);margin-bottom:6px;">Informations pratiques</div>
+          <div style="font-size:0.76rem;line-height:1.7;color:#3a3a3a;">
+            &#128197; Samedi 6 juin 2026<br>
+            &#128205; Maison Flow · Vannes · Morbihan<br>
+            &#128101; +250 participants attendus<br>
+            &#9728; Journ&#233;e + soir&#233;e
+          </div>
+        </div>
+        <a href="https://ypl.me/PUR" target="_blank" style="display:block;background:linear-gradient(135deg,var(--fuchsia),#c0156e);color:white;text-align:center;padding:12px 16px;border-radius:10px;text-decoration:none;font-size:0.78rem;font-weight:500;letter-spacing:0.05em;box-shadow:0 4px 15px rgba(233,30,140,0.3);">
+          &#128157; R&#233;server ma place &#8594;
+        </a>
+        <div style="text-align:center;font-size:0.62rem;color:var(--gris);">Places limit&#233;es · Inscription via Yurplan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE MATCHING WHATSAPP ===== -->
+<div class="page" id="pg-matching">
+  <div class="page-nav">
+    <button class="nav-btn" onclick="navTo('pg-seaside')">&#8592; Pr&#233;c&#233;dent</button>
+    <span class="nav-brand">&#9825; Les C&#339;urs <span class="italic">Solitaires</span></span>
+    <button class="nav-btn" onclick="navTo('pg-contact')">Suivant &#8594;</button>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:calc(297mm - 42px);">
+
+    <!-- COL GAUCHE : Accroche + bénéfices -->
+    <div style="background:linear-gradient(160deg,#0d0118,#3d0a5a,#6b1a7a);padding:32px 28px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-20px;right:-20px;font-size:8rem;color:rgba(255,255,255,0.04);">&#9825;</div>
+      <div style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px;"><span style="background:#E91E8C;color:white;font-size:0.62rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:4px 14px;border-radius:20px;box-shadow:0 3px 12px rgba(233,30,140,0.5);display:inline-block;margin-bottom:8px;">&#10024; NOUVEAU</span><br>Service exclusif</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:600;color:white;line-height:1.15;margin-bottom:6px;">Le matching<br><em style="color:#f9a8d4;">de Lili Karantez</em></div>
+      <div style="font-size:0.72rem;letter-spacing:0.05em;color:rgba(255,255,255,0.5);margin-bottom:20px;">Tu en as assez de swiper dans le vide ?</div>
+
+      <!-- Bénéfices -->
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <span style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(233,30,140,0.2);border:1px solid rgba(233,30,140,0.4);display:flex;align-items:center;justify-content:center;font-size:0.75rem;">&#128140;</span>
+          <div>
+            <div style="font-size:0.72rem;font-weight:500;color:white;margin-bottom:2px;">Une mise en relation personnalis&#233;e</div>
+            <div style="font-size:0.67rem;color:rgba(255,255,255,0.55);line-height:1.5;">Lili lit ton profil et te pr&#233;sente avec un message personnel qui explique pourquoi &#231;a peut fonctionner.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <span style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(0,188,212,0.2);border:1px solid rgba(0,188,212,0.4);display:flex;align-items:center;justify-content:center;font-size:0.75rem;">&#128172;</span>
+          <div>
+            <div style="font-size:0.72rem;font-weight:500;color:white;margin-bottom:2px;">Acc&#232;s au groupe WhatsApp priv&#233;</div>
+            <div style="font-size:0.67rem;color:rgba(255,255,255,0.55);line-height:1.5;">Un espace chaleureux par th&#233;matique, o&#249; les membres &#233;changent et se d&#233;couvrent.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <span style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;font-size:0.75rem;">&#128065;</span>
+          <div>
+            <div style="font-size:0.72rem;font-weight:500;color:white;margin-bottom:2px;">Un regard humain, pas un algorithme</div>
+            <div style="font-size:0.67rem;color:rgba(255,255,255,0.55);line-height:1.5;">Lili ne d&#233;l&#232;gue pas &#224; un robot. Elle lit ce que tu &#233;cris avec attention.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <span style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(155,89,182,0.2);border:1px solid rgba(155,89,182,0.4);display:flex;align-items:center;justify-content:center;font-size:0.75rem;">&#128274;</span>
+          <div>
+            <div style="font-size:0.72rem;font-weight:500;color:white;margin-bottom:2px;">Discr&#233;tion totale</div>
+            <div style="font-size:0.67rem;color:rgba(255,255,255,0.55);line-height:1.5;">Ton pseudo, ton &#226;ge, ta zone. Aucun profil public. Tu existes pour la bonne personne.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.6;">&#171;&#160;Ralentir, regarder vraiment, et faire confiance &#224; quelqu'un qui pourrait vous plaire.&#160;&#187;</div>
+    </div>
+
+    <!-- COL DROITE : Détails + CTA -->
+    <div style="padding:32px 28px;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--fuchsia);margin-bottom:12px;">Comment &#231;a marche ?</div>
+
+      <!-- Étapes -->
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--fuchsia),var(--violet));color:white;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:600;">1</div>
+          <div style="font-size:0.76rem;line-height:1.6;color:#3a3a3a;"><strong>Tu remplis ton profil</strong> &#8212; tranche d'&#226;ge, th&#233;matiques, ce que tu cherches.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--fuchsia),var(--violet));color:white;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:600;">2</div>
+          <div style="font-size:0.76rem;line-height:1.6;color:#3a3a3a;"><strong>Lili te lit vraiment</strong> &#8212; elle cherche des affinit&#233;s r&#233;elles, de caract&#232;re et de rythme de vie.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--fuchsia),var(--violet));color:white;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:600;">3</div>
+          <div style="font-size:0.76rem;line-height:1.6;color:#3a3a3a;"><strong>Elle vous pr&#233;sente</strong> chaque semaine avec un message priv&#233; qui explique pourquoi.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--fuchsia),var(--violet));color:white;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:600;">4</div>
+          <div style="font-size:0.76rem;line-height:1.6;color:#3a3a3a;"><strong>Tu vis dans le groupe</strong> WhatsApp &#8212; un espace vivant entre les mises en relation.</div>
+        </div>
+      </div>
+
+      <!-- Thématiques -->
+      <div style="background:var(--creme);border-radius:10px;padding:12px 14px;margin-bottom:16px;">
+        <div style="font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gris);margin-bottom:8px;">Th&#233;matiques disponibles</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span style="font-size:0.62rem;background:white;border:1px solid var(--creme-dark);border-radius:12px;padding:2px 8px;color:#3a3a3a;">&#127939; Randonn&#233;e &amp; Nature</span>
+          <span style="font-size:0.62rem;background:white;border:1px solid var(--creme-dark);border-radius:12px;padding:2px 8px;color:#3a3a3a;">&#128111; Danse</span>
+          <span style="font-size:0.62rem;background:white;border:1px solid var(--creme-dark);border-radius:12px;padding:2px 8px;color:#3a3a3a;">&#9992; Voyages</span>
+          <span style="font-size:0.62rem;background:white;border:1px solid var(--creme-dark);border-radius:12px;padding:2px 8px;color:#3a3a3a;">&#127754; Sports nautiques</span>
+          <span style="font-size:0.62rem;background:white;border:1px solid var(--creme-dark);border-radius:12px;padding:2px 8px;color:#3a3a3a;">&#127981; Culture</span>
+          <span style="font-size:0.62rem;background:white;border:1px solid var(--creme-dark);border-radius:12px;padding:2px 8px;color:#3a3a3a;">&#127807; Bien-&#234;tre</span>
+          <span style="font-size:0.62rem;background:white;border:1px solid var(--creme-dark);border-radius:12px;padding:2px 8px;color:#3a3a3a;">&#127863; Art de vivre</span>
+        </div>
+      </div>
+
+      <!-- Prix + CTA -->
+      <div style="background:linear-gradient(135deg,#1a0428,#6b1a7a);border-radius:12px;padding:16px 18px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:600;color:white;">27 &#8364;</div>
+        <div style="font-size:0.65rem;color:rgba(255,255,255,0.6);margin-bottom:12px;">du 1er au 30 avril 2026 · Sans engagement</div>
+        <a href="https://lilikarantez.github.io/matching-lili-karantez/" target="_blank" style="display:inline-block;background:linear-gradient(135deg,var(--fuchsia),#c0156e);color:white;padding:10px 24px;border-radius:25px;text-decoration:none;font-size:0.78rem;font-weight:500;letter-spacing:0.05em;box-shadow:0 4px 15px rgba(233,30,140,0.4);">
+          &#128157; Je prends mon abonnement
+        </a>
+        <div style="font-size:0.6rem;color:rgba(255,255,255,0.35);margin-top:8px;">Offre valable uniquement pour avril 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 8 — CONTACT ===== -->
+<div class="page" id="pg-contact">
+  <div class="page-contact">
+    <div class="contact-coeur">&#9825;</div>
+    <div class="contact-titre">Les C&#339;urs <span class="italic">Solitaires</span></div>
+    <div class="contact-sub">Le magazine des rencontres &middot; Grand Ouest &middot; Bretagne</div>
+    <div class="contact-separateur"></div>
+
+    <!-- Présentation Lili -->
+    <div style="margin-bottom:20px; position:relative;">
+      <div style="font-family:'Playfair Display',serif; font-size:1.3rem; font-style:italic; font-weight:600; color:white; margin-bottom:4px;">Lili Karantez <sup style="font-size:0.65rem; font-style:normal;">&#174;</sup></div>
+      <div style="font-size:0.68rem; color:rgba(255,255,255,0.6); line-height:1.7;">
+        Auteure &middot; Organisatrice d&#8217;&eacute;v&eacute;nements pour c&eacute;libataires<br>
+        Fondatrice des C&#339;urs Solitaires
+      </div>
+    </div>
+
+    <div class="contact-separateur"></div>
+
+    <div class="contact-infos">
+      <div class="contact-ligne">&#128205; Centre des Affaires Lorient La Base &middot; 1 rue &Eacute;tienne d&#8217;Orves &middot; 56100 Lorient</div>
+      <div class="contact-ligne">&#128140; <a href="mailto:lilikarantez@gmail.com">lilikarantez@gmail.com</a></div>
+    </div>
+
+    <div class="contact-separateur"></div>
+
+    <!-- Groupes Facebook -->
+    <div style="position:relative; margin-bottom:20px;">
+      <div style="font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:10px;">Rejoindre nos groupes priv&eacute;s</div>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:8px;">
+        <a href="https://www.facebook.com/groups/1610004976584294/" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:5px 12px;text-decoration:none;font-size:0.65rem;color:rgba(255,255,255,0.8);">&#128216; Morbihan &middot; 56</a>
+        <a href="https://www.facebook.com/groups/456856470343173/" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:5px 12px;text-decoration:none;font-size:0.65rem;color:rgba(255,255,255,0.8);">&#128216; Finist&egrave;re &middot; 29</a>
+        <a href="https://www.facebook.com/groups/439415065858530/" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:5px 12px;text-decoration:none;font-size:0.65rem;color:rgba(255,255,255,0.8);">&#128216; C&ocirc;tes-d&#8217;Armor &middot; 22</a>
+        <a href="https://www.facebook.com/groups/1609476126612650/" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:5px 12px;text-decoration:none;font-size:0.65rem;color:rgba(255,255,255,0.8);">&#128216; Ille-et-Vilaine &middot; 35</a>
+      </div>
+      <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.9rem; color:rgba(255,255,255,0.5);">+2 500 membres en Bretagne</div>
+    </div>
+
+    <div class="contact-separateur"></div>
+
+    <!-- Prochaine parution -->
+    <div style="position:relative; margin-bottom:16px;">
+      <div style="font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:6px;">Prochaine parution</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:white; font-style:italic;">25 avril 2026</div>
+    </div>
+
+    <div class="contact-siret" style="position:relative;">SIRET : 40149331700069</div>
+    <div class="contact-copyright" style="position:relative;">&copy; 2026 Les C&#339;urs Solitaires &middot; Lili Karantez &middot; Tous droits r&eacute;serv&eacute;s</div>
+  </div></div>
+
+<!-- ===== MODALE PAIEMENT ===== -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <span class="modal-heart">💝</span>
+      <div class="modal-titre" id="modalTitre">Ce profil vous touche ?</div>
+      <div class="modal-sous">Mise en relation · Les Cœurs Solitaires</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-prix">
+        <div class="modal-prix-num">13 €</div>
+        <div class="modal-prix-label">Mise en relation personnalisée par Lili</div>
+      </div>
+      <a id="modalYurplan" href="#" target="_blank" class="modal-btn primary">
+        💳 Réserver ma mise en relation · 13 €
+      </a>
+      <div class="modal-separator">— ou —</div>
+      
+      <div class="modal-note">
+        Après paiement, Lili vous contacte sous 48h.<br>
+        Discret · Confidentiel · Humain ♥
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(nom, yurplan) {
+  document.getElementById('modalTitre').textContent = nom + ' vous a touché·e ?';
+  document.getElementById('modalYurplan').href = yurplan;
+  document.getElementById('payModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+
+function navTo(targetId) {
+  if (!targetId) return;
+  var el = document.getElementById(targetId);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function toggleArticle(id) {
+  var el = document.getElementById(id);
+  var wasOpen = el.classList.contains('open');
+  // Fermer tous
+  document.querySelectorAll('.article-accordion').forEach(function(a) {
+    a.classList.remove('open');
+  });
+  if (!wasOpen) {
+    el.classList.add('open');
+    // Animer la barre de lecture
+    var textEl = document.getElementById('text-' + id);
+    var progEl = document.getElementById('prog-' + id);
+    if (textEl && progEl) {
+      setTimeout(function() {
+        var h = textEl.scrollHeight;
+        var bodyH = textEl.closest('.article-body').scrollHeight;
+        progEl.style.width = '100%';
+      }, 100);
+    }
+  }
+}
+
+function closeModal() {
+  document.getElementById('payModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('payModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+async function submitBubble(e, formId, profil) {
+  e.preventDefault();
+  const form = document.getElementById(formId);
+  const data = new FormData(form);
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+    const json = await res.json();
+    if (json.success) {
+      form.style.display = 'none';
+      document.getElementById('success-' + formId).style.display = 'block';
+    }
+  } catch(err) {
+    alert("Erreur lors de l'envoi. Veuillez réessayer.");
+  }
+}
+</script>
+</body>
+</html>
